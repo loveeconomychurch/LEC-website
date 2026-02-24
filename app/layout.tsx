@@ -3,6 +3,8 @@ import type { Metadata } from "next"
 import { Anton, Montserrat } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { Suspense } from "react"
+import { CmsPreviewListener } from "@/components/cms-preview-listener"
+import { CartWrapper } from "@/components/cart"
 import "./globals.css"
 
 const anton = Anton({
@@ -33,8 +35,11 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body className={`font-sans ${montserrat.variable} ${anton.variable} antialiased`}>
-        <Suspense fallback={null}>{children}</Suspense>
-        <Analytics />
+        <CartWrapper>
+          <Suspense fallback={null}>{children}</Suspense>
+          <CmsPreviewListener />
+          <Analytics />
+        </CartWrapper>
       </body>
     </html>
   )

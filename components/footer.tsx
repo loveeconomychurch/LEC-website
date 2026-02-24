@@ -1,110 +1,144 @@
+"use client"
+
 import { Facebook, Instagram, Youtube, Twitter } from "lucide-react"
+import Image from "next/image"
+import { Button } from "./ui/button"
+import { Input } from "./ui/input"
+import { useSiteContent } from "@/hooks/use-site-content"
 
 export function Footer() {
+  const { data, loading } = useSiteContent("footer")
+  if (loading || !data) return null
+
   return (
-    <footer className="bg-foreground text-background py-12">
+    <footer data-cms-section="footer" className="bg-background text-background pt-12 sm:pt-16 md:pt-24 pb-8 sm:pb-12">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="flex flex-col gap-10 lg:flex-row lg:justify-between lg:gap-8">
           {/* Church Info */}
-          <div>
-            <h3 className="text-2xl font-bold mb-4 font-[family-name:var(--font-playfair)]">Grace Community</h3>
-            <p className="text-background/80 mb-4">
-              A place where faith comes alive through worship, community, and God's transforming love.
+          <div className="w-full lg:w-1/4">
+            <Image
+              src="/love-economy-church-logo.png"
+              alt="Love Economy Church Logo"
+              width={40}
+              height={40}
+              className="w-40 sm:w-48 md:w-56 h-auto"
+            />
+            <p className="text-foreground/80 my-3 sm:my-4 text-sm max-w-sm">
+              {data.tagline}
             </p>
-            <div className="flex space-x-4">
-              <Facebook className="h-5 w-5 hover:text-accent cursor-pointer transition-colors" />
-              <Instagram className="h-5 w-5 hover:text-accent cursor-pointer transition-colors" />
-              <Youtube className="h-5 w-5 hover:text-accent cursor-pointer transition-colors" />
-              <Twitter className="h-5 w-5 hover:text-accent cursor-pointer transition-colors" />
+            <div className="flex space-x-4 text-background">
+              <div className="bg-foreground rounded-full p-2 stroke-foreground hover:bg-accent cursor-pointer transition-colors">
+                <Facebook className="h-5 w-5 stroke-foreground hover:stroke-accent" fill="black" strokeWidth={0} />
+              </div>
+              <div className="bg-foreground rounded-full p-2 stroke-foreground hover:bg-accent hover:stroke-accent cursor-pointer transition-colors">
+                <Instagram className="h-5 w-5 stroke-foreground hover:stroke-accent" fill="black" strokeWidth={1.5} />
+              </div>
+              <div className="bg-foreground rounded-full p-2 stroke-foreground hover:bg-accent hover:stroke-accent cursor-pointer transition-colors">
+                <Youtube className="h-5 w-5 stroke-foreground hover:stroke-accent" fill="black" strokeWidth={1.5} />
+              </div>
+              <div className="bg-foreground rounded-full p-2 stroke-foreground hover:bg-accent hover:stroke-accent cursor-pointer transition-colors">
+                <Twitter className="h-5 w-5 stroke-foreground hover:stroke-accent" fill="black" strokeWidth={0} />
+              </div>
             </div>
           </div>
-
-          {/* Quick Links */}
-          <div>
-            <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
-            <ul className="space-y-2 text-background/80">
-              <li>
-                <a href="#about" className="hover:text-accent transition-colors">
-                  About Us
-                </a>
-              </li>
-              <li>
-                <a href="#ministries" className="hover:text-accent transition-colors">
-                  Ministries
-                </a>
-              </li>
-              <li>
-                <a href="#sermons" className="hover:text-accent transition-colors">
-                  Sermons
-                </a>
-              </li>
-              <li>
-                <a href="#events" className="hover:text-accent transition-colors">
-                  Events
-                </a>
-              </li>
-              <li>
-                <a href="#contact" className="hover:text-accent transition-colors">
-                  Contact
-                </a>
-              </li>
-            </ul>
+          <div className="w-full lg:w-1/4 space-y-4">
+              <h4 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-foreground">{data.newsletterTitle}</h4>
+              <div className="flex flex-col gap-2 text-background mt-2 sm:mt-4 max-w-sm">
+                <Input type="email" placeholder={data.newsletterPlaceholder} className="w-full p-2 pl-5 rounded-full h-11 text-foreground border border-foreground/50" />
+                <Button className="bg-foreground h-11 rounded-full p-2 stroke-foreground hover:bg-accent hover:stroke-accent cursor-pointer transition-colors">
+                  {data.newsletterButton}
+                </Button>
+              </div>
+              <p className="text-foreground/80 text-sm">{data.newsletterDescription}</p>
           </div>
+          <div className="flex flex-col sm:flex-row sm:flex-wrap justify-between gap-8 sm:gap-6 w-full lg:w-2/4">
+            {/* Quick Links */}
+            <div className="min-w-[140px]">
+              <h4 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-foreground">Quick Links</h4>
+              <ul className="space-y-4 text-foreground/80 text-sm">
+                <li>
+                  <a href="#about" className="hover:text-accent transition-colors">
+                    About Us
+                  </a>
+                </li>
+                <li>
+                  <a href="#ministries" className="hover:text-accent transition-colors">
+                    Ministries
+                  </a>
+                </li>
+                <li>
+                  <a href="#sermons" className="hover:text-accent transition-colors">
+                    Sermons
+                  </a>
+                </li>
+                <li>
+                  <a href="#events" className="hover:text-accent transition-colors">
+                    Events
+                  </a>
+                </li>
+                <li>
+                  <a href="#contact" className="hover:text-accent transition-colors">
+                    Contact
+                  </a>
+                </li>
+              </ul>
+            </div>
 
-          {/* Ministries */}
-          <div>
-            <h4 className="text-lg font-semibold mb-4">Ministries</h4>
-            <ul className="space-y-2 text-background/80">
-              <li>
-                <a href="#" className="hover:text-accent transition-colors">
-                  Youth Ministry
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-accent transition-colors">
-                  Children's Ministry
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-accent transition-colors">
-                  Adult Ministry
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-accent transition-colors">
-                  Worship Ministry
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-accent transition-colors">
-                  Community Outreach
-                </a>
-              </li>
-            </ul>
-          </div>
+            {/* Ministries */}
+            <div className="min-w-[140px]">
+              <h4 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-foreground">Ministries</h4>
+              <ul className="space-y-4 text-foreground/80 text-sm">
+                <li>
+                  <a href="#" className="hover:text-accent transition-colors">
+                    Youth Ministry
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-accent transition-colors">
+                    Children's Ministry
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-accent transition-colors">
+                    Adult Ministry
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-accent transition-colors">
+                    Worship Ministry
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-accent transition-colors">
+                    Community Outreach
+                  </a>
+                </li>
+              </ul>
+            </div>
 
-          {/* Contact Info */}
-          <div>
-            <h4 className="text-lg font-semibold mb-4">Contact Info</h4>
-            <div className="space-y-2 text-background/80">
-              <p>
-                123 Faith Street
-                <br />
-                Your City, State 12345
-              </p>
-              <p>(555) 123-4567</p>
-              <p>info@gracecommunity.org</p>
-              <div className="mt-4">
-                <p className="font-semibold text-background">Service Times:</p>
-                <p>Sunday: 9:00 AM & 11:00 AM</p>
-                <p>Wednesday: 7:00 PM</p>
+            {/* Contact Info */}
+            <div className="min-w-[140px]">
+              <h4 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-foreground">Contact Info</h4>
+              <div className="space-y-4 text-foreground/80 text-sm">
+                <p>
+                  123 Faith Street
+                  <br />
+                  Your City, State 12345
+                </p>
+                <p>(555) 123-4567</p>
+                <p>info@loveeconomychurch.org</p>
+                <div className="mt-8 space-y-4">
+                  <p className="font-semibold text-foreground">Service Times:</p>
+                  <p>Sunday: 9:00 AM & 12:30 PM</p>
+                  <p>Wednesday: 7:00 PM</p>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="border-t border-background/20 mt-8 pt-8 text-center text-background/60">
-          <p>&copy; 2024 Grace Community Church. All rights reserved.</p>
+        <div className="border-t border-foreground/20 mt-6 sm:mt-8 pt-6 sm:pt-8 text-center text-foreground/60 text-xs sm:text-sm px-2">
+          <p>&copy; {new Date().getFullYear()} Love Economy Church. All rights reserved.</p>
         </div>
       </div>
     </footer>

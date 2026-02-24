@@ -125,3 +125,104 @@
     @apply bg-background text-foreground;
   }
 }
+
+ /* Marquee scrolling animations */
+ @keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scroll-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-scroll-left {
+  animation: scroll-left 30s linear infinite;
+}
+
+.animate-scroll-right {
+  animation: scroll-right 30s linear infinite;
+}
+
+/* Mobile-specific animations */
+@media (max-width: 768px) {
+  .animate-scroll-left {
+    animation: scroll-left 20s linear infinite;
+  }
+  
+  .animate-scroll-right {
+    animation: scroll-right 20s linear infinite;
+  }
+}
+
+/* Ensure base styles are applied */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Mobile-specific improvements */
+@media (max-width: 768px) {
+  .w-85 {
+    width: 16rem; /* 256px */
+  }
+  
+  /* Media gallery mobile responsiveness */
+  .animate-scroll-left .w-85,
+  .animate-scroll-right .w-85 {
+    width: 12rem; /* 192px */
+    height: 14rem; /* 224px */
+  }
+  
+  /* Improve touch targets */
+  button, a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Better text readability on mobile */
+  p, span, div {
+    line-height: 1.6;
+  }
+  
+  /* Optimize modal scrolling */
+  .overflow-y-auto {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+.animate-infinite-scroll:hover,
+.animate-scroll:hover,
+.animate-marquee:hover,
+.hover\:pause-animation:hover {
+  animation-play-state: paused !important;
+}
+
+/* Hide scrollbar but keep scroll behavior */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}

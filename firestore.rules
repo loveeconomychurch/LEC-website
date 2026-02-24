@@ -1,0 +1,25 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // CMS content: anyone can read, only authenticated users can write
+    match /content/{sectionId} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+    // Merch products: anyone can read (storefront), only auth can write
+    match /merch_products/{productId} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+    // Merch orders: anyone can create (checkout), only auth can read/update
+    match /merch_orders/{orderId} {
+      allow create: if true;
+      allow read, update, delete: if request.auth != null;
+    }
+    // Merch config (e.g. categories): anyone can read, only auth can write
+    match /merch_config/{docId} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+  }
+}
