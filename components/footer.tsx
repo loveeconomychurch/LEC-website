@@ -1,10 +1,10 @@
 "use client"
 
-import { Facebook, Instagram, Youtube, Twitter } from "lucide-react"
 import Image from "next/image"
 import { Button } from "./ui/button"
 import { Input } from "./ui/input"
 import { useSiteContent } from "@/hooks/use-site-content"
+import { SOCIAL_LINKS } from "@/lib/social-links"
 
 export function Footer() {
   const { data, loading } = useSiteContent("footer")
@@ -27,18 +27,18 @@ export function Footer() {
               {data.tagline}
             </p>
             <div className="flex space-x-4 text-background">
-              <div className="bg-foreground rounded-full p-2 stroke-foreground hover:bg-accent cursor-pointer transition-colors">
-                <Facebook className="h-5 w-5 stroke-foreground hover:stroke-accent" fill="black" strokeWidth={0} />
-              </div>
-              <div className="bg-foreground rounded-full p-2 stroke-foreground hover:bg-accent hover:stroke-accent cursor-pointer transition-colors">
-                <Instagram className="h-5 w-5 stroke-foreground hover:stroke-accent" fill="black" strokeWidth={1.5} />
-              </div>
-              <div className="bg-foreground rounded-full p-2 stroke-foreground hover:bg-accent hover:stroke-accent cursor-pointer transition-colors">
-                <Youtube className="h-5 w-5 stroke-foreground hover:stroke-accent" fill="black" strokeWidth={1.5} />
-              </div>
-              <div className="bg-foreground rounded-full p-2 stroke-foreground hover:bg-accent hover:stroke-accent cursor-pointer transition-colors">
-                <Twitter className="h-5 w-5 stroke-foreground hover:stroke-accent" fill="black" strokeWidth={0} />
-              </div>
+              {SOCIAL_LINKS.map(({ label, href, Icon, strokeWidth }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="bg-foreground rounded-full p-2 stroke-foreground hover:bg-accent hover:stroke-accent cursor-pointer transition-colors"
+                >
+                  <Icon className="h-5 w-5 stroke-foreground hover:stroke-accent" fill="black" strokeWidth={strokeWidth} />
+                </a>
+              ))}
             </div>
           </div>
           <div className="w-full lg:w-1/4 space-y-4">

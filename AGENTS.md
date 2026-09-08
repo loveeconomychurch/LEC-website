@@ -11,11 +11,11 @@ pnpm dev
 
 Optional env: `NEXT_PUBLIC_GOOGLE_MAPS_API_KEY` (Locations maps). Firebase client config is hardcoded in `lib/firebase.ts` (`projectId: "le-church-app"`).
 
-| Script | Purpose |
-|--------|---------|
-| `pnpm dev` | Local Next server |
+| Script                          | Purpose                                     |
+| ------------------------------- | ------------------------------------------- |
+| `pnpm dev`                    | Local Next server                           |
 | `pnpm build` / `pnpm start` | Production build (`output: 'standalone'`) |
-| `pnpm lint` | ESLint |
+| `pnpm lint`                   | ESLint                                      |
 
 Package manager is **pnpm** (`pnpm-lock.yaml`). Do not switch to npm without a reason.
 
@@ -62,11 +62,11 @@ public/              # Static media
 
 ## Merch model
 
-| Collection | Notes |
-|------------|--------|
-| `merch_products` | Public read; auth write |
-| `merch_orders` | Anyone create; auth read/update/delete |
-| `merch_config/categories` | Public read; auth write |
+| Collection                  | Notes                                  |
+| --------------------------- | -------------------------------------- |
+| `merch_products`          | Public read; auth write                |
+| `merch_orders`            | Anyone create; auth read/update/delete |
+| `merch_config/categories` | Public read; auth write                |
 
 ## Admin auth
 

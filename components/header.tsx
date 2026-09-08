@@ -3,9 +3,10 @@
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { Search, Facebook, Twitter, Youtube, Instagram, ArrowRight } from "lucide-react"
+import { Search, ArrowRight } from "lucide-react"
 import Image from "next/image"
 import { useSiteContent } from "@/hooks/use-site-content"
+import { SOCIAL_LINKS } from "@/lib/social-links"
 import type { HeaderNavLink } from "@/lib/types/cms"
 
 export function Header(background: { background?: boolean }) {
@@ -177,46 +178,23 @@ export function Header(background: { background?: boolean }) {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.6, delay: 0.7, ease: [0.4, 0, 0.2, 1] }}
                   >
-                    <motion.div 
-                      className="bg-foreground rounded-full p-2 stroke-foreground hover:bg-accent cursor-pointer transition-colors"
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.95 }}
-                      initial={{ opacity: 0, scale: 0.5 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ duration: 0.4, delay: 0.8, ease: [0.4, 0, 0.2, 1] }}
-                    >
-                    <Facebook className="h-8 w-8 stroke-foreground hover:stroke-accent" fill="black" strokeWidth={0} />
-                    </motion.div>
-                    <motion.div 
-                      className="bg-foreground rounded-full p-2 stroke-foreground hover:bg-accent hover:stroke-accent cursor-pointer transition-colors"
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.95 }}
-                      initial={{ opacity: 0, scale: 0.5 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ duration: 0.4, delay: 0.9, ease: [0.4, 0, 0.2, 1] }}
-                    >
-                    <Instagram className="h-8 w-8 stroke-foreground hover:stroke-accent" fill="black" strokeWidth={1.5} />
-                    </motion.div>
-                    <motion.div 
-                      className="bg-foreground rounded-full p-2 stroke-foreground hover:bg-accent hover:stroke-accent cursor-pointer transition-colors"
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.95 }}
-                      initial={{ opacity: 0, scale: 0.5 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ duration: 0.4, delay: 1.0, ease: [0.4, 0, 0.2, 1] }}
-                    >
-                    <Youtube className="h-8 w-8 stroke-foreground hover:stroke-accent" fill="black" strokeWidth={1.5} />
-                    </motion.div>
-                    <motion.div 
-                      className="bg-foreground rounded-full p-2 stroke-foreground hover:bg-accent hover:stroke-accent cursor-pointer transition-colors"
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.95 }}
-                      initial={{ opacity: 0, scale: 0.5 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ duration: 0.4, delay: 1.1, ease: [0.4, 0, 0.2, 1] }}
-                    >
-                    <Twitter className="h-8 w-8 stroke-foreground hover:stroke-accent" fill="black" strokeWidth={0} />
-                    </motion.div>
+                    {SOCIAL_LINKS.map(({ label, href, Icon, strokeWidth }, i) => (
+                      <motion.a
+                        key={label}
+                        href={href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={label}
+                        className="bg-foreground rounded-full p-2 stroke-foreground hover:bg-accent hover:stroke-accent cursor-pointer transition-colors"
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.95 }}
+                        initial={{ opacity: 0, scale: 0.5 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.4, delay: 0.8 + i * 0.1, ease: [0.4, 0, 0.2, 1] }}
+                      >
+                        <Icon className="h-8 w-8 stroke-foreground hover:stroke-accent" fill="black" strokeWidth={strokeWidth} />
+                      </motion.a>
+                    ))}
                   </motion.div>
                 </motion.div>
                 
@@ -240,13 +218,17 @@ export function Header(background: { background?: boolean }) {
                     >
                       Grow with us
                     </motion.h4>
-                    <motion.p 
+                    <motion.a
+                      href="https://www.youtube.com/@bishopisaacotiboateng"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block"
                       initial={{ opacity: 0, y: 15 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5, delay: 0.5, ease: [0.4, 0, 0.2, 1] }}
                     >
-                      Youtube
-                    </motion.p>
+                      <p>Youtube</p>
+                    </motion.a>
                     <motion.p 
                       initial={{ opacity: 0, y: 15 }}
                       animate={{ opacity: 1, y: 0 }}
