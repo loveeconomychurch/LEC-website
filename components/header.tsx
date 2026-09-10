@@ -133,7 +133,7 @@ export function Header(background: { background?: boolean }) {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.6, delay: 0.3, ease: [0.4, 0, 0.2, 1] }}
                   >
-                    <h1>Need a Prayer?</h1>
+                    <h1> Need a Prayer?</h1>
                   </motion.a>
                   <motion.a
                     href="https://pastoroti.org"
