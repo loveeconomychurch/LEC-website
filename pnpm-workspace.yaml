@@ -1,0 +1,12 @@
+# Allow dependency postinstall/build scripts (pnpm 10+ / 11).
+# Required for Firebase App Hosting installs — without this, pnpm fails with
+# ERR_PNPM_IGNORED_BUILDS for packages that ship native binaries or codegen.
+onlyBuiltDependencies:
+  - '@firebase/util'
+  - '@tailwindcss/oxide'
+  - protobufjs
+
+allowBuilds:
+  '@firebase/util': true
+  '@tailwindcss/oxide': true
+  protobufjs: true
