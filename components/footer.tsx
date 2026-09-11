@@ -42,14 +42,14 @@ export function Footer() {
             </div>
           </div>
           <div className="w-full lg:w-1/4 space-y-4">
-              <h4 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-foreground">{data.newsletterTitle}</h4>
-              <div className="flex flex-col gap-2 text-background mt-2 sm:mt-4 max-w-sm">
-                <Input type="email" placeholder={data.newsletterPlaceholder} className="w-full p-2 pl-5 rounded-full h-11 text-foreground border border-foreground/50" />
-                <Button className="bg-foreground h-11 rounded-full p-2 stroke-foreground hover:bg-accent hover:stroke-accent cursor-pointer transition-colors">
-                  {data.newsletterButton}
-                </Button>
-              </div>
-              <p className="text-foreground/80 text-sm">{data.newsletterDescription}</p>
+            <h4 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-foreground">{data.newsletterTitle}</h4>
+            <div className="flex flex-col gap-2 text-background mt-2 sm:mt-4 max-w-sm">
+              <Input type="email" placeholder={data.newsletterPlaceholder} className="w-full p-2 pl-5 rounded-full h-11 text-foreground border border-foreground/50" />
+              <Button className="bg-foreground h-11 rounded-full p-2 stroke-foreground hover:bg-accent hover:stroke-accent cursor-pointer transition-colors">
+                {data.newsletterButton}
+              </Button>
+            </div>
+            <p className="text-foreground/80 text-sm">{data.newsletterDescription}</p>
           </div>
           <div className="flex flex-col sm:flex-row sm:flex-wrap justify-between gap-8 sm:gap-6 w-full lg:w-2/4">
             {/* Quick Links */}
@@ -57,27 +57,27 @@ export function Footer() {
               <h4 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-foreground">Quick Links</h4>
               <ul className="space-y-4 text-foreground/80 text-sm">
                 <li>
-                  <a href="#about" className="hover:text-accent transition-colors">
+                  <a href="/about" className="hover:text-accent transition-colors">
                     About Us
                   </a>
                 </li>
                 <li>
-                  <a href="#ministries" className="hover:text-accent transition-colors">
+                  <a href="/#ministries" className="hover:text-accent transition-colors">
                     Ministries
                   </a>
                 </li>
                 <li>
-                  <a href="#sermons" className="hover:text-accent transition-colors">
+                  <a href="/#latest-sermon" className="hover:text-accent transition-colors">
                     Sermons
                   </a>
                 </li>
                 <li>
-                  <a href="#events" className="hover:text-accent transition-colors">
+                  <a href="/events" className="hover:text-accent transition-colors">
                     Events
                   </a>
                 </li>
                 <li>
-                  <a href="#contact" className="hover:text-accent transition-colors">
+                  <a href="/locations" className="hover:text-accent transition-colors">
                     Contact
                   </a>
                 </li>
@@ -89,28 +89,33 @@ export function Footer() {
               <h4 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-foreground">Ministries</h4>
               <ul className="space-y-4 text-foreground/80 text-sm">
                 <li>
-                  <a href="#" className="hover:text-accent transition-colors">
-                    Youth Ministry
+                  <a href="/letom" className="hover:text-accent transition-colors">
+                    L.E.T.O.M
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-accent transition-colors">
+                  <a href="/3one6" className="hover:text-accent transition-colors">
+                    3one6
+                  </a>
+                </li>
+                <li>
+                  <a href="/community-outreach" className="hover:text-accent transition-colors">
+                    Community Outreach
+                  </a>
+                </li>
+                <li>
+                  <a href="/k-church" className="hover:text-accent transition-colors">
+                    K-church
+                  </a>
+                </li>
+                <li>
+                  <a href="/childrens-ministry" className="hover:text-accent transition-colors">
                     Children's Ministry
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-accent transition-colors">
-                    Adult Ministry
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-accent transition-colors">
-                    Worship Ministry
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-accent transition-colors">
-                    Community Outreach
+                  <a href="/teens-church" className="hover:text-accent transition-colors">
+                    Teens Church
                   </a>
                 </li>
               </ul>
@@ -121,12 +126,27 @@ export function Footer() {
               <h4 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-foreground">Contact Info</h4>
               <div className="space-y-4 text-foreground/80 text-sm">
                 <p>
-                  123 Faith Street
+                  Love Economy Church, Thesaurus
                   <br />
-                  Your City, State 12345
+                  GE-113-5393
+                  <br />
+                  Sena Road - Sun-City, Agbogba
+                  <br />
+                  Accra, Ghana
+                  <br />
+                  <a href="tel:+233592222695" className="hover:text-accent transition-colors">
+                    +233 592222695
+                  </a>
                 </p>
-                <p>(555) 123-4567</p>
-                <p>info@loveeconomychurch.org</p>
+
+                <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-foreground">Box Address</h3>
+                <p>
+                  Christ World Incorporated
+                  <br />
+                  LGpmb99
+                  <br />
+                  Legon
+                </p>
                 <div className="mt-8 space-y-4">
                   <p className="font-semibold text-foreground">Service Times:</p>
                   <p>Sunday: 9:00 AM & 12:30 PM</p>
@@ -137,8 +157,11 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-foreground/20 mt-6 sm:mt-8 pt-6 sm:pt-8 text-center text-foreground/60 text-xs sm:text-sm px-2">
+        <div className="border-t border-foreground/20 mt-6 sm:mt-8 pt-6 sm:pt-8 flex flex-wrap items-center justify-between gap-3 text-foreground/60 text-xs sm:text-sm px-2">
           <p>&copy; {new Date().getFullYear()} Love Economy Church. All rights reserved.</p>
+          <a href="mailto:info@loveeconomychurch.org" className="ml-auto hover:text-accent transition-colors">
+            info@loveeconomychurch.org
+          </a>
         </div>
       </div>
     </footer>
