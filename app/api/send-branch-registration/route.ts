@@ -10,13 +10,16 @@ export async function POST(request: Request) {
     }
     const resend = new Resend(apiKey)
 
-    const { branchName, lat, lng } = await request.json()
+    const { branchName, contact, services, lat, lng } = await request.json()
 
     if (!branchName || lat === undefined || lng === undefined) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 })
     }
 
     const mapsUrl = `https://www.google.com/maps?q=${lat},${lng}`
+    const servicesHtml = (services as string | undefined)?.trim()
+      ? (services as string).trim().replace(/\n/g, "<br>")
+      : "Not provided"
 
     const data = await resend.emails.send({
       from: "Love Economy Church <onboarding@resend.dev>", // using resend's testing domain
@@ -25,6 +28,8 @@ export async function POST(request: Request) {
       html: `
         <h2>New Branch Registration</h2>
         <p><strong>Branch Name:</strong> ${branchName}</p>
+        <p><strong>Contact:</strong> ${contact?.trim() || "Not provided"}</p>
+        <p><strong>Services:</strong><br>${servicesHtml}</p>
         <p><strong>Location Coordinates:</strong> ${lat}, ${lng}</p>
         <p>
           <a href="${mapsUrl}" target="_blank" style="display:inline-block;padding:10px 20px;background-color:#2563eb;color:#ffffff;text-decoration:none;border-radius:5px;">

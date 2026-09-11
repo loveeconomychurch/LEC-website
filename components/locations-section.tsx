@@ -12,10 +12,10 @@ const churchLocations = [
   {
     id: 1,
     name: "Love Economy Church - Main Campus",
-    address: "123 Main Street, Accra, Ghana",
-    phone: "+233 24 123 4567",
-    hours: "Sunday: 9:00 AM - 12:00 PM",
-    position: { lat: 5.6037, lng: -0.1870 }, // Accra coordinates
+    address: "Love Economy Church Thesaurus, Agbogba",
+    phone: "+233 592222695",
+    hours: "Sunday: 9:00 AM & 12:30 PM, Wednesday: 7:00 PM",
+    position: { lat: 5.700828, lng: -0.195195 }, // Agbogba coordinates
     description: "Our main worship center with full facilities",
     images: [
       "/church-worship-service-with-people-raising-hands-i.jpg",

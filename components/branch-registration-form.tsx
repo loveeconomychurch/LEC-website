@@ -6,6 +6,7 @@ import { MapPin, Send, Loader2 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { Textarea } from "@/components/ui/textarea"
 import { toast } from "sonner"
 import { useRouter } from "next/navigation"
 
@@ -30,6 +31,8 @@ export function BranchRegistrationForm() {
 
   const [map, setMap] = useState<google.maps.Map | null>(null)
   const [branchName, setBranchName] = useState("")
+  const [contact, setContact] = useState("")
+  const [services, setServices] = useState("")
   const [selectedLocation, setSelectedLocation] = useState<{ lat: number; lng: number } | null>(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
 
@@ -95,6 +98,8 @@ export function BranchRegistrationForm() {
         },
         body: JSON.stringify({
           branchName,
+          contact,
+          services,
           lat: selectedLocation.lat,
           lng: selectedLocation.lng,
         }),
@@ -108,6 +113,8 @@ export function BranchRegistrationForm() {
 
       toast.success("Branch registered successfully! Check your email.")
       setBranchName("")
+      setContact("")
+      setServices("")
       setSelectedLocation(null)
       // Optional: router.push("/")
     } catch (error: any) {
@@ -121,7 +128,7 @@ export function BranchRegistrationForm() {
   return (
     <div className="w-full max-w-5xl mx-auto p-4 sm:p-6 lg:p-8 bg-white rounded-xl shadow-sm border border-gray-100">
       <div className="mb-8 text-center">
-        <h2 className="text-3xl font-black mb-2 text-gray-900 uppercase">Register New Branch</h2>
+        <h2 className="text-3xl font-black mb-2 text-gray-900 uppercase">Register Branch</h2>
         <p className="text-gray-600">Enter the branch name and drop a pin on the map to mark its location.</p>
       </div>
 
@@ -138,6 +145,34 @@ export function BranchRegistrationForm() {
               value={branchName}
               onChange={(e) => setBranchName(e.target.value)}
               className="w-full"
+            />
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="contact" className="text-base font-semibold">
+              Contact
+            </Label>
+            <Input
+              id="contact"
+              type="tel"
+              placeholder="+233 24 234 5678"
+              value={contact}
+              onChange={(e) => setContact(e.target.value)}
+              className="w-full"
+            />
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="services" className="text-base font-semibold">
+              Services
+            </Label>
+            <Textarea
+              id="services"
+              placeholder={"Sunday: 10:00 AM - 1:00 PM"}
+              value={services}
+              onChange={(e) => setServices(e.target.value)}
+              className="w-full"
+              rows={3}
             />
           </div>
 
@@ -201,7 +236,7 @@ export function BranchRegistrationForm() {
               </div>
             </div>
           )}
-          
+
           {!isLoaded && !loadError && (
             <div className="flex items-center justify-center h-full bg-gray-50">
               <div className="text-center">
