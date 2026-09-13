@@ -51,14 +51,22 @@ export function Header(background: { background?: boolean }) {
 
             {/* Desktop Actions */}
             <div className="hidden md:flex items-center space-x-4 ml-auto">
-              <div className="relative">
+              {/* 
+              <div className="relative hidden lg:block">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
                 <input
                   type="text"
                   placeholder={data.searchPlaceholder}
-                  className="pl-10 pr-4 py-2 border border-gray-200 rounded-full text-sm text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent w-64"
+                  className="pl-10 pr-4 py-2 border border-gray-200 rounded-full text-sm text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent w-48 xl:w-64"
                 />
               </div>
+              */}
+              <Button asChild className="rounded-full bg-white text-black hover:bg-gray-200 font-semibold px-5 hidden lg:inline-flex">
+                <a href="/give">Partner & Seed</a>
+              </Button>
+              <Button asChild className="rounded-full bg-orange-500 text-white hover:bg-orange-600 font-semibold px-5 hidden md:inline-flex">
+                <a href="/locations">Locations</a>
+              </Button>
               <Button variant="ghost" size="sm" className="rounded-full hidden">
                 <div className="w-8 h-8 bg-gray-700 rounded-full flex items-center justify-center">
                   <span className="text-white text-sm">👤</span>
@@ -119,13 +127,15 @@ export function Header(background: { background?: boolean }) {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.8, delay: 0.1, ease: [0.4, 0, 0.2, 1] }}
                 >
-                  <motion.h1 
+                  <motion.a
+                    href="/locations"
+                    className="block"
                     initial={{ opacity: 0, x: -30 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.6, delay: 0.2, ease: [0.4, 0, 0.2, 1] }}
                   >
-                    Visit LEC
-                  </motion.h1>
+                    <h1>Visit LEC</h1>
+                  </motion.a>
                   <motion.a
                     href="/prayer"
                     className="block"
@@ -162,7 +172,7 @@ export function Header(background: { background?: boolean }) {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.6, delay: 0.5, ease: [0.4, 0, 0.2, 1] }}
                   >
-                    <h1>Give</h1>
+                    <h1>Give & Partner</h1>
                   </motion.a>
                   <motion.h1 
                     initial={{ opacity: 0, x: -30 }}
@@ -229,27 +239,39 @@ export function Header(background: { background?: boolean }) {
                     >
                       <p>Youtube</p>
                     </motion.a>
-                    <motion.p 
+                    <motion.a
+                      href="https://open.spotify.com/show/2vI77oY9oXnlU56jWVguRz?si=fBJPT2fqTUCWqp2ffiasZw&nd=1&dlsi=1df1c5337bda463e"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block"
                       initial={{ opacity: 0, y: 15 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5, delay: 0.6, ease: [0.4, 0, 0.2, 1] }}
                     >
-                      Spotify
-                    </motion.p>
-                    <motion.p 
+                      <p>Spotify</p>
+                    </motion.a>
+                    <motion.a
+                      href="https://podcasts.apple.com/us/podcast/bishop-isaac-oti-boateng-audio-podcast/id1218400764"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block"
                       initial={{ opacity: 0, y: 15 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5, delay: 0.7, ease: [0.4, 0, 0.2, 1] }}
                     >
-                      Podcasts
-                    </motion.p>
-                    <motion.p 
+                      <p>Podcasts</p>
+                    </motion.a>
+                    <motion.a
+                      href="https://podcastaddict.com/podcast/bishop-isaac-oti-boateng-audio-podcast/5829301"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block"
                       initial={{ opacity: 0, y: 15 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5, delay: 0.8, ease: [0.4, 0, 0.2, 1] }}
                     >
-                      Podcast Addict
-                    </motion.p>
+                      <p>Podcast Addict</p>
+                    </motion.a>
                   </motion.div>
                   <motion.div 
                     className="flex flex-col gap-4"
@@ -265,20 +287,26 @@ export function Header(background: { background?: boolean }) {
                     >
                       More
                     </motion.h4>
-                    <motion.p 
+                    <motion.a
+                      href="/business-school"
+                      className="block"
                       initial={{ opacity: 0, y: 15 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5, delay: 0.6, ease: [0.4, 0, 0.2, 1] }}
                     >
-                      Business School
-                    </motion.p>
-                    <motion.p 
+                      <p>Business School</p>
+                    </motion.a>
+                    <motion.a
+                      href="https://meletao.loveeconomychurch.org/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block"
                       initial={{ opacity: 0, y: 15 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5, delay: 0.7, ease: [0.4, 0, 0.2, 1] }}
                     >
-                      Meletao
-                    </motion.p>
+                      <p>Meletao</p>
+                    </motion.a>
                     <motion.a
                       href="/merch"
                       className="block"
@@ -389,28 +417,31 @@ export function Header(background: { background?: boolean }) {
                     >
                       Find a branch <ArrowRight className="h-5 w-5 -rotate-45" />
                     </motion.a>
-                    <motion.p 
+                    <motion.a
+                      href="/groups"
                       className="flex items-center gap-2"
                       initial={{ opacity: 0, y: 15 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5, delay: 0.8, ease: [0.4, 0, 0.2, 1] }}
                     >
                       Join a cell <ArrowRight className="h-5 w-5 -rotate-45" />
-                    </motion.p>
-                    <motion.p 
+                    </motion.a>
+                    <motion.p
                       initial={{ opacity: 0, y: 15 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5, delay: 0.9, ease: [0.4, 0, 0.2, 1] }}
                     >
                       Download LECTV
                     </motion.p>
-                    <motion.p 
+                    <motion.a
+                      href="#footer"
+                      className="block"
                       initial={{ opacity: 0, y: 15 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5, delay: 1.0, ease: [0.4, 0, 0.2, 1] }}
                     >
-                      Have a Question?
-                    </motion.p>
+                      <p>Have a Question?</p>
+                    </motion.a>
                   </motion.div>
                 </motion.div>
                 

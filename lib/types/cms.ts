@@ -236,10 +236,14 @@ export interface AboutCoreValuesContent {
   coreValues: AboutCoreValueItem[];
 }
 
+export interface ServiceTimeItem {
+  label: string;
+  time: string;
+}
+
 export interface AboutServiceTimesContent {
   serviceTimesTitle: string;
-  sundayLabel: string;
-  sundayTime: string;
+  sundayServices: ServiceTimeItem[];
   wednesdayLabel: string;
   wednesdayTime: string;
   visitCtaText: string;

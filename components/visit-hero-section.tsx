@@ -3,8 +3,9 @@
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { Button } from "./ui/button"
-import { Calendar, ArrowRight } from "lucide-react"
+import { ArrowRight } from "lucide-react"
 import { useSiteContent } from "@/hooks/use-site-content"
+import { ServiceTimesRow } from "@/components/service-times-row"
 
 export function VisitHeroSection() {
   const { data: visitHeroData, loading: visitHeroLoading } = useSiteContent("visitHero")
@@ -60,30 +61,13 @@ export function VisitHeroSection() {
 
       {/* Service times + CTA */}
       <div className="w-full mx-auto py-16 sm:py-18 px-6 sm:px-8 bg-neutral-900">
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8 mb-6 sm:mb-8">
-          <div className="flex items-center gap-3 text-white">
-            <Calendar className="w-5 h-5 sm:w-6 sm:h-6 shrink-0 text-white/90" />
-            <div className="text-left">
-              <p className="font-bold text-lg sm:text-xl">{serviceTimesData.sundayLabel}</p>
-              <p className="text-neutral-300 text-sm sm:text-base">{serviceTimesData.sundayTime}</p>
-            </div>
-          </div>
-          <div className="hidden sm:block w-px h-14 sm:h-16 bg-white/20" />
-          <div className="flex items-center gap-3 text-white">
-            <Calendar className="w-5 h-5 sm:w-6 sm:h-6 shrink-0 text-white/90" />
-            <div className="text-left">
-              <p className="font-bold text-lg sm:text-xl">{serviceTimesData.sundayLabel}</p>
-              <p className="text-neutral-300 text-sm sm:text-base">{serviceTimesData.sundayTime}</p>
-            </div>
-          </div>
-          <div className="hidden sm:block w-px h-14 sm:h-16 bg-white/20" />
-          <div className="flex items-center gap-3 text-white">
-            <Calendar className="w-5 h-5 sm:w-6 sm:h-6 shrink-0 text-white/90" />
-            <div className="text-left">
-              <p className="font-bold text-lg sm:text-xl">{serviceTimesData.wednesdayLabel}</p>
-              <p className="text-neutral-300 text-sm sm:text-base">{serviceTimesData.wednesdayTime}</p>
-            </div>
-          </div>
+        <div className="mb-6 sm:mb-8">
+          <ServiceTimesRow
+            items={[
+              ...serviceTimesData.sundayServices,
+              { label: serviceTimesData.wednesdayLabel, time: serviceTimesData.wednesdayTime },
+            ]}
+          />
         </div>
         <div className="flex justify-center">
           <Button

@@ -14,7 +14,7 @@ const churchLocations = [
     name: "Love Economy Church - Main Campus",
     address: "Love Economy Church Thesaurus, Agbogba",
     phone: "+233 592222695",
-    hours: "Sunday: 9:00 AM & 12:30 PM, Wednesday: 7:00 PM",
+    hours: "Sun: Love Service 9:00 AM, Enlargement Service 12:30 PM · Wed: 7:00 PM",
     position: { lat: 5.700828, lng: -0.195195 }, // Agbogba coordinates
     description: "Our main worship center with full facilities",
     images: [

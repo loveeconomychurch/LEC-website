@@ -11,7 +11,7 @@ export function Footer() {
   if (loading || !data) return null
 
   return (
-    <footer data-cms-section="footer" className="bg-background text-background pt-12 sm:pt-16 md:pt-24 pb-8 sm:pb-12">
+    <footer id="footer" data-cms-section="footer" className="bg-background text-background pt-12 sm:pt-16 md:pt-24 pb-8 sm:pb-12">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col gap-10 lg:flex-row lg:justify-between lg:gap-8">
           {/* Church Info */}
@@ -77,8 +77,13 @@ export function Footer() {
                   </a>
                 </li>
                 <li>
+                  <a href="/give" className="hover:text-accent transition-colors">
+                    Partner & Give a Seed
+                  </a>
+                </li>
+                <li>
                   <a href="/locations" className="hover:text-accent transition-colors">
-                    Contact
+                    Locations
                   </a>
                 </li>
               </ul>
@@ -147,9 +152,15 @@ export function Footer() {
                   <br />
                   Legon
                 </p>
-                <div className="mt-8 space-y-4">
-                  <p className="font-semibold text-foreground">Service Times:</p>
-                  <p>Sunday: 9:00 AM & 12:30 PM</p>
+                <div className="mt-6">
+                  <a href="/locations" className="hover:text-accent transition-colors text-foreground/80 text-sm">
+                    View All Locations
+                  </a>
+                </div>
+                <div className="mt-8 space-y-1">
+                  <p className="font-semibold text-foreground mb-3">Service Times:</p>
+                  <p>Sunday Love Service: 9:00 AM</p>
+                  <p>Sunday Enlargement Service: 12:30 PM</p>
                   <p>Wednesday: 7:00 PM</p>
                 </div>
               </div>

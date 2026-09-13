@@ -75,8 +75,8 @@ import type {
 export const defaultHero: HeroContent = {
   headline: "OUR YEAR OF ABUNDANT GRACE AND GREAT APOSTLESHIP",
   subtitle:
-    "Love Economy Church is a community where faith transforms lives and purpose drives action. We believe in the power of love to create lasting change in our hearts, families, and world.",
-  serviceTimes: "Sundays at 9am to 12:30pm   |   Wednesdays at 7pm",
+    "We're a church built on grace and driven by love — dispensing the life of Christ into our homes, our city, and the nations.",
+  serviceTimes: "Sundays at 9am to 12:30pm | Wednesdays at 7pm",
   primaryCta: "Join Our Community",
   primaryCtaLink: "/visit",
   secondaryCta: "Watch Online",
@@ -204,11 +204,8 @@ export const defaultHeader: HeaderContent = {
   searchPlaceholder: "Search",
   navLinks: [
     { label: "Home", href: "/" },
-    { label: "Give", href: "/give" },
-    { label: "Serve", href: "/serve" },
     { label: "Events", href: "/events" },
     { label: "LC Live", href: "/groups" },
-    { label: "Locations", href: "/locations" },
     { label: "About", href: "/about" },
   ],
 };
@@ -249,23 +246,23 @@ export const defaultAboutMissionVision: AboutMissionVisionContent = {
   missionVisionTitle: "Our Mission & Vision",
   missionVisionSubtitle: "What drives us forward",
   missionTitle: "Our Mission",
-  missionText: "Building Christ into all men through the revelation [Galatians 1:16], formation [Galatians 4:19], magnification [Philippians 1:20], and glorification [2 Thessalonians 1:12] of Christ in all men, until all men conform to the image of His son [Romans 8:29], using Christ as the building material.",
+  missionText: "The mission of the Church explains the practical processes that are to happen to the targets of the vision to ensure its fulfillment.\n\nThe mission is as follows:\n\nBuilding Christ into all men through the Revelation (Galatians 1:16), Formation (Galatians 4:19), Magnification (Philippians 1:20) and Glorification (2 Thessalonians 1:12) of Christ, until all men conform to the image of His Son (Romans 8:29), using Christ as the building material.",
   visionTitle: "Our Vision",
-  visionText: "Building a nation where Christ is all and in all and to make Christ the centre of the world by dispensing Christ with love, the Holy Ghost as our means.",
+  visionText: "The vision of the Church is what defines the purpose and the scope of activities of the Church.\n\nThe vision is as follows:\n\nTo build a world where Christ is all and in all and to make Christ the centre of the world by dispensing Christ with love, the Holy Ghost as our means.\n\n(Colossians 3:11)",
 };
 
 export const defaultAboutMessage: AboutMessageContent = {
-  messageTitle: "The Message Of The House",
-  messageTagline: "We preach LOVE — dispensing Christ with Love with the Holy Spirit as our means.",
-  messagePoint1Title: "1. God's love for me",
-  messagePoint1aTitle: "a) God sent Jesus because He loved us.",
-  messagePoint1aText: "John 3:16 – His life, death, resurrection, ascension, His seating, and crowning all because He loves me.",
-  messagePoint1bTitle: "b) He now lives in me through the ministry of the Holy Spirit",
-  messagePoint1bText: "to help me live His life of goodness and abundance in this world.",
-  messagePoint2Title: "2. I love Him because He first loved me.",
-  messagePoint2aTitle: "a) I will do anything for Him",
-  messagePoint2aText: "– go where He wants me to go, do what He wants me to do, share His love with others to know He lives in them through the Holy Spirit – I will do everything for Him because he did everything for me. It is my only way of thanking Him.",
-  messagePoint2bTitle: "b) I will aid others in returning His love",
+  messageTitle: "Our Message",
+  messageTagline: "We preach LOVE i.e. dispensing Christ with Love with the Holy Spirit as our means.",
+  messagePoint1Title: "1. God's love for me. (John 3:16)",
+  messagePoint1aTitle: "a. God sent Jesus because He loves humanity.",
+  messagePoint1aText: "Jesus' birth, life, crucifixion, death, resurrection, ascension, his seating and crowning are all because He loves me.",
+  messagePoint1bTitle: "b. Jesus now lives in me through the ministry of the Holy Spirit",
+  messagePoint1bText: "to help me live His life of goodness and abundance in this world",
+  messagePoint2Title: "2. I love Him because He first loved me. (1 John 4:19)",
+  messagePoint2aTitle: "a. I will do anything for Him:",
+  messagePoint2aText: "I will go where He wants me to go, do what He wants me to do, share His love (point # 1) with others, help others to know He lives in them through the Holy Spirit. I will do everything for Him because He did everything for me. It is my only way of thanking Him.",
+  messagePoint2bTitle: "b. I will aid others in returning His love",
   messagePoint2bText: "by teaching them how to love Him.",
 };
 
@@ -283,8 +280,10 @@ export const defaultAboutCoreValues: AboutCoreValuesContent = {
 
 export const defaultAboutServiceTimes: AboutServiceTimesContent = {
   serviceTimesTitle: "Join Us for Service",
-  sundayLabel: "Sundays",
-  sundayTime: "9:00 AM - 12:30 PM",
+  sundayServices: [
+    { label: "Sunday Love Service", time: "9:00 AM" },
+    { label: "Sunday Enlargement Service", time: "12:30 PM" },
+  ],
   wednesdayLabel: "Wednesdays",
   wednesdayTime: "7:00 PM",
   visitCtaText: "Visit a Location",

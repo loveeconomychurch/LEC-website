@@ -2,8 +2,9 @@
 
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Heart, Target, Users, Globe, BookOpen, Calendar } from "lucide-react"
+import { ArrowRight, Heart, Target, Users, Globe, BookOpen } from "lucide-react"
 import { useSiteContent } from "@/hooks/use-site-content"
+import { ServiceTimesRow } from "@/components/service-times-row"
 
 const VALUE_ICONS: Record<string, typeof Heart> = {
   Love: Heart,
@@ -126,7 +127,7 @@ export function AboutSection() {
                 <Target className="w-7 h-7 sm:w-8 sm:h-8 text-white" />
               </div>
               <h3 className="text-2xl sm:text-3xl font-bold text-white mb-3 sm:mb-4">{missionVisionData.missionTitle}</h3>
-              <p className="text-neutral-300 leading-relaxed text-sm sm:text-base">{missionVisionData.missionText}</p>
+              <p className="text-neutral-300 leading-relaxed text-sm sm:text-base whitespace-pre-line">{missionVisionData.missionText}</p>
             </motion.div>
 
             <motion.div
@@ -140,7 +141,7 @@ export function AboutSection() {
                 <Globe className="w-7 h-7 sm:w-8 sm:h-8 text-white" />
               </div>
               <h3 className="text-2xl sm:text-3xl font-bold text-white mb-3 sm:mb-4">{missionVisionData.visionTitle}</h3>
-              <p className="text-neutral-300 leading-relaxed text-sm sm:text-base">{missionVisionData.visionText}</p>
+              <p className="text-neutral-300 leading-relaxed text-sm sm:text-base whitespace-pre-line">{missionVisionData.visionText}</p>
             </motion.div>
           </div>
         </div>
@@ -356,23 +357,14 @@ export function AboutSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8 mb-8 sm:mb-12"
+              className="mb-8 sm:mb-12"
             >
-              <div className="flex items-center gap-3 text-white">
-                <Calendar className="w-5 h-5 sm:w-6 sm:h-6 shrink-0" />
-                <div className="text-left">
-                  <p className="font-bold text-lg sm:text-xl">{serviceTimesData.sundayLabel}</p>
-                  <p className="text-neutral-300 text-sm sm:text-base">{serviceTimesData.sundayTime}</p>
-                </div>
-              </div>
-              <div className="hidden sm:block w-px h-14 sm:h-16 bg-white/20" />
-              <div className="flex items-center gap-3 text-white">
-                <Calendar className="w-5 h-5 sm:w-6 sm:h-6 shrink-0" />
-                <div className="text-left">
-                  <p className="font-bold text-lg sm:text-xl">{serviceTimesData.wednesdayLabel}</p>
-                  <p className="text-neutral-300 text-sm sm:text-base">{serviceTimesData.wednesdayTime}</p>
-                </div>
-              </div>
+              <ServiceTimesRow
+                items={[
+                  ...serviceTimesData.sundayServices,
+                  { label: serviceTimesData.wednesdayLabel, time: serviceTimesData.wednesdayTime },
+                ]}
+              />
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
