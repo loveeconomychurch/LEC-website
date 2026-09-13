@@ -157,11 +157,13 @@ export function Footer() {
                     View All Locations
                   </a>
                 </div>
-                <div className="mt-8 space-y-1">
-                  <p className="font-semibold text-foreground mb-3">Service Times:</p>
-                  <p>Sunday Love Service: 9:00 AM</p>
-                  <p>Sunday Enlargement Service: 12:30 PM</p>
-                  <p>Wednesday: 7:00 PM</p>
+                <div className="mt-8 space-y-2">
+                  <p className="font-bold text-foreground mb-3">Sunday Services</p>
+                  <p className="text-foreground/80">7:30 AM - Love Service</p>
+                  <p className="text-foreground/80">9:00 AM - Enlargement Service</p>
+                  
+                  <p className="font-bold text-foreground mt-6 mb-3">Mid-Week Service</p>
+                  <p className="text-foreground/80">7:00 PM - Wednesday</p>
                 </div>
               </div>
             </div>

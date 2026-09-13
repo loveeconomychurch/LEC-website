@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
 import Image from "next/image"
 import { useSiteContent } from "@/hooks/use-site-content"
+import { defaultHero } from "@/lib/content-defaults"
 
 export function HeroSection() {
   const { data, loading } = useSiteContent("hero")
@@ -78,7 +79,7 @@ export function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5, ease: [0.4, 0, 0.2, 1] }}
         >
-          {data.subtitle}
+          {defaultHero.subtitle}
         </motion.p>
 
         <motion.p 
@@ -87,7 +88,7 @@ export function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.7, ease: [0.4, 0, 0.2, 1] }}
         >
-          {data.serviceTimes}
+          {defaultHero.serviceTimes}
         </motion.p>
 
         <motion.div 

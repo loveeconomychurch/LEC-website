@@ -11,68 +11,273 @@ import Image from "next/image"
 const churchLocations = [
   {
     id: 1,
-    name: "Love Economy Church - Main Campus",
-    address: "Love Economy Church Thesaurus, Agbogba",
-    phone: "+233 592222695",
+    name: "Love Economy Church, Thesaurus-HQ",
+    address: "GE-113-5393, Sena Road - Sun-City, Agbogba",
+    phone: "+233 59 222 2695",
     hours: "Sun: Love Service 9:00 AM, Enlargement Service 12:30 PM · Wed: 7:00 PM",
     position: { lat: 5.700828, lng: -0.195195 }, // Agbogba coordinates
     description: "Our main worship center with full facilities",
     images: [
-      "/church-worship-service-with-people-raising-hands-i.jpg",
-      "/pastor-preaching-sermon-from-church-pulpit.jpg",
+      "/hq-1.png",
+      "/hq-2.png",
+      "/hq-3.png",
     ],
   },
   {
     id: 2,
-    name: "Love Economy Church - East Branch",
-    address: "456 East Avenue, Tema, Ghana",
+    name: "Love Economy Church - Tema Branch",
+    address: "Kings City Ghana, Kumordzi Plaza, Tema",
     phone: "+233 24 234 5678",
-    hours: "Sunday: 10:00 AM - 1:00 PM",
+    hours: "Sunday: 8:30 AM - 11:30 AM",
     position: { lat: 5.6870, lng: -0.0010 }, // Tema coordinates
     description: "Community-focused branch in the eastern region",
     images: [
-      "/people-praying-together-in-church.jpg",
-      "/worship-team-playing-music-on-church-stage.jpg",
+      "/tema-1.jpg",
+      "/tema-2.jpg",
     ],
   },
   {
     id: 3,
-    name: "Love Economy Church - West Branch",
-    address: "789 West Road, Kumasi, Ghana",
-    phone: "+233 24 345 6789",
-    hours: "Sunday: 8:00 AM - 11:00 AM",
-    position: { lat: 6.6885, lng: -1.6244 }, // Kumasi coordinates
-    description: "Serving the Ashanti region",
-    images: [
-      "/christmas-eve-candlelight-church-service.jpg",
-      "/church-worship-service-with-people-raising-hands-i.jpg",
-    ],
+    name: "Love Economy Church - Ashaley Botwe",
+    address: "23 Papafio Hills Rd, Nmai Dzorn (School Junction)",
+    phone: "+233 54 345 2124",
+    hours: "Sunday: 8:30 AM - 11:30 AM",
+    position: { lat: 5.6667, lng: -0.1500 }, // rough coord
+    description: "Serving the Ashaley Botwe community",
+    images: ["/ashaley-botwe.jpg"],
   },
   {
     id: 4,
-    name: "Love Economy Church - North Branch",
-    address: "321 North Boulevard, Tamale, Ghana",
-    phone: "+233 24 456 7890",
-    hours: "Sunday: 9:30 AM - 12:30 PM",
-    position: { lat: 9.4000, lng: -0.8393 }, // Tamale coordinates
-    description: "Northern region community outreach center",
-    images: [
-      "/happy-family-at-church-event-together.jpg",
-      "/adults-in-bible-study-group-discussion.jpg",
-    ],
+    name: "Love Economy Church - Lapaz",
+    address: "GN-1227-9028 Watsonia St, Nii Boiman / Nii Okaiman East",
+    phone: "+233 59 222 2695",
+    hours: "Sunday: 8:30 AM - 11:30 AM",
+    position: { lat: 5.6022, lng: -0.2458 },
+    description: "A welcoming community in Lapaz",
+    images: ["/church-worship-service-with-people-raising-hands-i.jpg"],
   },
   {
     id: 5,
-    name: "Love Economy Church - Central Branch",
-    address: "654 Central Plaza, Cape Coast, Ghana",
-    phone: "+233 24 567 8901",
+    name: "Love Economy Church - Kaneshie",
+    address: "Senchi Street, Kaneshie",
+    phone: "+233 59 222 2695",
     hours: "Sunday: 8:30 AM - 11:30 AM",
-    position: { lat: 5.1053, lng: -1.2466 }, // Cape Coast coordinates
-    description: "Historic coastal branch with ocean views",
+    position: { lat: 5.5786, lng: -0.2319 },
+    description: "Join our Kaneshie family",
+    images: ["/kaneshie.jpg"],
+  },
+  {
+    id: 6,
+    name: "Love Economy Church - Adjiringanor",
+    address: "Adjiringanor, Accra",
+    phone: "+233 59 222 2695",
+    hours: "Sunday: 8:30 AM - 11:30 AM",
+    position: { lat: 5.6558, lng: -0.1478 },
+    description: "Adjiringanor community branch",
+    images: ["/pastor-preaching-sermon-from-church-pulpit.jpg"],
+  },
+  {
+    id: 7,
+    name: "Love Economy Church - Ashaiman",
+    address: "Asafo House, Akosombo–Tema Road, Ashaiman",
+    phone: "+233 59 222 2695",
+    hours: "Sunday: 8:30 AM - 11:30 AM",
+    position: { lat: 5.6989, lng: -0.0359 },
+    description: "Ashaiman community branch",
+    images: ["/happy-family-at-church-event-together.jpg"],
+  },
+  {
+    id: 8,
+    name: "Love Economy Church - River Cathedral",
+    address: "36 Mantse Okle Street, Nungua",
+    phone: "+233 59 222 2695",
+    hours: "Sunday: 8:30 AM - 11:30 AM",
+    position: { lat: 5.6015, lng: -0.0766 },
+    description: "River Cathedral in Nungua",
+    images: ["/adults-in-bible-study-group-discussion.jpg"],
+  },
+  {
+    id: 9,
+    name: "Love Economy Church - Awoshie",
+    address: "Awoshie, Accra",
+    phone: "+233 59 222 2695",
+    hours: "Sunday: 8:30 AM - 11:30 AM",
+    position: { lat: 5.5898, lng: -0.2662 },
+    description: "Serving Awoshie and its environs",
+    images: ["/awoshie.jpg"],
+  },
+  {
+    id: 10,
+    name: "Love Economy Church - Weija",
+    address: "Weija, Accra",
+    phone: "+233 59 222 2695",
+    hours: "Sunday: 8:30 AM - 11:30 AM",
+    position: { lat: 5.5562, lng: -0.3294 },
+    description: "Weija community branch",
+    images: ["/youth-group-teenagers-in-church-fellowship.jpg"],
+  },
+  {
+    id: 11,
+    name: "Love Economy Church - Gbawe",
+    address: "Gbawe Bulemin, Accra",
+    phone: "+233 59 222 2695",
+    hours: "Sunday: 8:30 AM - 11:30 AM",
+    position: { lat: 5.5841, lng: -0.2974 },
+    description: "Gbawe community branch",
+    images: ["/christmas-eve-candlelight-church-service.jpg"],
+  },
+  {
+    id: 12,
+    name: "Love Economy Church - Oyibi",
+    address: "Oyibi, Accra",
+    phone: "+233 59 222 2695",
+    hours: "Sunday: 8:30 AM - 11:30 AM",
+    position: { lat: 5.7972, lng: -0.1197 },
+    description: "Oyibi community branch",
+    images: ["/people-praying-together-in-church.jpg"],
+  },
+  {
+    id: 13,
+    name: "Love Economy Church - Parresia (Kasoa)",
+    address: "Near Benab Fuel Station, Krispol City Rd",
+    phone: "+233 59 222 2695",
+    hours: "Sunday: 8:30 AM - 11:30 AM",
+    position: { lat: 5.5348, lng: -0.4285 },
+    description: "Parresia branch in Kasoa",
+    images: ["/church-worship-service-with-people-raising-hands-i.jpg"],
+  },
+  {
+    id: 14,
+    name: "Love Economy Church - Winneba",
+    address: "Winneba, Central Region",
+    phone: "+233 59 222 2695",
+    hours: "Sunday: 8:30 AM - 11:30 AM",
+    position: { lat: 5.3400, lng: -0.6231 },
+    description: "Serving the Winneba community",
+    images: ["/pastor-preaching-sermon-from-church-pulpit.jpg"],
+  },
+  {
+    id: 15,
+    name: "Love Economy Church - Alpha Branch (Kumasi)",
+    address: "Prof Adjmah Crescent, Kumasi",
+    phone: "+233 59 222 2695",
+    hours: "Sunday: 8:30 AM - 11:30 AM",
+    position: { lat: 6.6795199, lng: -1.5414779 },
+    description: "Alpha branch in Kumasi",
     images: [
-      "/volunteers-serving-food-at-community-outreach-even.jpg",
-      "/youth-group-teenagers-in-church-fellowship.jpg",
+      "/alpha-1.jpg",
+      "/alpha-2.jpg",
     ],
+  },
+  {
+    id: 16,
+    name: "Love Economy Church - Photizo (Daban, Kumasi)",
+    address: "Voltic Road, 103 Happer Road, Daban",
+    phone: "+233 59 222 2695",
+    hours: "Sunday: 8:30 AM - 11:30 AM",
+    position: { lat: 6.6666, lng: -1.6166 },
+    description: "Photizo branch in Daban",
+    images: ["/happy-family-at-church-event-together.jpg"],
+  },
+  {
+    id: 17,
+    name: "Love Economy Church - Obuasi",
+    address: "Obuasi, Ashanti Region",
+    phone: "+233 59 222 2695",
+    hours: "Sunday: 8:30 AM - 11:30 AM",
+    position: { lat: 6.2000, lng: -1.6833 },
+    description: "Serving the Obuasi community",
+    images: ["/adults-in-bible-study-group-discussion.jpg"],
+  },
+  {
+    id: 18,
+    name: "Love Economy Church - Takoradi",
+    address: "Takoradi, Western Region",
+    phone: "+233 59 222 2695",
+    hours: "Sunday: 8:30 AM - 11:30 AM",
+    position: { lat: 4.8833, lng: -1.7500 },
+    description: "Serving the Takoradi community",
+    images: ["/volunteers-serving-food-at-community-outreach-even.jpg"],
+  },
+  {
+    id: 19,
+    name: "Love Economy Church - Hohoe (Kehdem)",
+    address: "Hohoe, Volta Region",
+    phone: "+233 59 222 2695",
+    hours: "Sunday: 8:30 AM - 11:30 AM",
+    position: { lat: 7.1500, lng: 0.4667 },
+    description: "Kehdem branch in Hohoe",
+    images: ["/youth-group-teenagers-in-church-fellowship.jpg"],
+  },
+  {
+    id: 20,
+    name: "Love Economy Church - UK (London)",
+    address: "2D Arodene Road, Brixton Hill, London, UK",
+    phone: "+44 000 000 0000",
+    hours: "Sunday: 8:30 AM - 11:30 AM",
+    position: { lat: 51.4503, lng: -0.1167 }, // Brixton Hill
+    description: "Our UK headquarters serving the London community",
+    images: ["/happy-family-at-church-event-together.jpg"],
+  },
+  {
+    id: 21,
+    name: "Love Economy Church - Canada (GTA)",
+    address: "Mississauga & Etobicoke, Greater Toronto Area",
+    phone: "+1 000 000 0000",
+    hours: "Sunday: 8:30 AM - 11:30 AM",
+    position: { lat: 43.5890, lng: -79.6441 }, // Mississauga
+    description: "Serving the Greater Toronto Area in Canada",
+    images: ["/adults-in-bible-study-group-discussion.jpg"],
+  },
+  {
+    id: 22,
+    name: "Love Economy Church - USA",
+    address: "Fayetteville, North Carolina",
+    phone: "+1 000 000 0000",
+    hours: "Sunday: 8:30 AM - 11:30 AM",
+    position: { lat: 35.0527, lng: -78.8784 }, // Fayetteville
+    description: "International fellowship gatherings in the US",
+    images: ["/volunteers-serving-food-at-community-outreach-even.jpg"],
+  },
+  {
+    id: 23,
+    name: "Love Economy Church - Nigeria",
+    address: "Nigeria",
+    phone: "+234 000 000 0000",
+    hours: "Sunday: 8:30 AM - 11:30 AM",
+    position: { lat: 9.0820, lng: 8.6753 }, // Nigeria
+    description: "Official international fellowship in Nigeria",
+    images: ["/youth-group-teenagers-in-church-fellowship.jpg"],
+  },
+  {
+    id: 24,
+    name: "Love Economy Church - Kenya",
+    address: "Kenya",
+    phone: "+254 000 000 0000",
+    hours: "Sunday: 8:30 AM - 11:30 AM",
+    position: { lat: -1.2921, lng: 36.8219 }, // Nairobi
+    description: "Official international fellowship in Kenya",
+    images: ["/people-praying-together-in-church.jpg"],
+  },
+  {
+    id: 25,
+    name: "Love Economy Church - Liberia",
+    address: "Liberia",
+    phone: "+231 000 000 0000",
+    hours: "Sunday: 8:30 AM - 11:30 AM",
+    position: { lat: 6.3156, lng: -10.8074 }, // Monrovia
+    description: "Official international fellowship in Liberia",
+    images: ["/christmas-eve-candlelight-church-service.jpg"],
+  },
+  {
+    id: 26,
+    name: "Love Economy Church - Zimbabwe",
+    address: "Zimbabwe",
+    phone: "+263 000 000 0000",
+    hours: "Sunday: 8:30 AM - 11:30 AM",
+    position: { lat: -17.8252, lng: 31.0335 }, // Harare
+    description: "Official international fellowship in Zimbabwe",
+    images: ["/church-worship-service-with-people-raising-hands-i.jpg"],
   },
 ]
 
@@ -166,9 +371,9 @@ export function LocationsSection() {
     const a =
       Math.sin(dLat / 2) * Math.sin(dLat / 2) +
       Math.cos((lat1 * Math.PI) / 180) *
-        Math.cos((lat2 * Math.PI) / 180) *
-        Math.sin(dLon / 2) *
-        Math.sin(dLon / 2)
+      Math.cos((lat2 * Math.PI) / 180) *
+      Math.sin(dLon / 2) *
+      Math.sin(dLon / 2)
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
     return R * c
   }
@@ -277,11 +482,11 @@ export function LocationsSection() {
                 {sortedLocations.map((location) => {
                   const distance = userLocation
                     ? calculateDistance(
-                        userLocation.lat,
-                        userLocation.lng,
-                        location.position.lat,
-                        location.position.lng
-                      )
+                      userLocation.lat,
+                      userLocation.lng,
+                      location.position.lat,
+                      location.position.lng
+                    )
                     : null
 
                   return (
@@ -289,9 +494,8 @@ export function LocationsSection() {
                       key={location.id}
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
-                      className={`p-4 cursor-pointer hover:bg-gray-50 transition-colors ${
-                        selectedLocation?.id === location.id ? "bg-blue-50 border-l-4 border-blue-600" : ""
-                      }`}
+                      className={`p-4 cursor-pointer hover:bg-gray-50 transition-colors ${selectedLocation?.id === location.id ? "bg-blue-50 border-l-4 border-blue-600" : ""
+                        }`}
                       onClick={() => handleLocationClick(location)}
                     >
                       <div className="flex items-start gap-3">
@@ -393,7 +597,7 @@ export function LocationsSection() {
                 >
                   <div className="p-0 max-w-xs">
 
-                  {/* <X className="absolute top-2 right-2" /> */}
+                    {/* <X className="absolute top-2 right-2" /> */}
                     {selectedLocation.images && selectedLocation.images.length > 0 && (
                       <div className="flex gap-1">
                         {selectedLocation.images.slice(0, 2).map((image, index) => (

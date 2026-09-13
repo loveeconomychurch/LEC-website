@@ -4,6 +4,7 @@ import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Heart, Target, Users, Globe, BookOpen } from "lucide-react"
 import { useSiteContent } from "@/hooks/use-site-content"
+import { defaultAboutStory, defaultAboutServiceTimes } from "@/lib/content-defaults"
 import { ServiceTimesRow } from "@/components/service-times-row"
 
 const VALUE_ICONS: Record<string, typeof Heart> = {
@@ -77,7 +78,7 @@ export function AboutSection() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="space-y-4 text-base sm:text-lg text-neutral-600 leading-relaxed"
             >
-              <p>{storyData.storyParagraph1}</p>
+              <p>{defaultAboutStory.storyParagraph1}</p>
               <p>{storyData.storyParagraph2}</p>
               <p>{storyData.storyParagraph3}</p>
             </motion.div>
@@ -361,8 +362,8 @@ export function AboutSection() {
             >
               <ServiceTimesRow
                 items={[
-                  ...serviceTimesData.sundayServices,
-                  { label: serviceTimesData.wednesdayLabel, time: serviceTimesData.wednesdayTime },
+                  ...defaultAboutServiceTimes.sundayServices,
+                  { label: defaultAboutServiceTimes.wednesdayLabel, time: defaultAboutServiceTimes.wednesdayTime },
                 ]}
               />
             </motion.div>
@@ -382,7 +383,7 @@ export function AboutSection() {
                 asChild
               >
                 <a href="/locations">
-                  {serviceTimesData.visitCtaText}
+                  {defaultAboutServiceTimes.visitCtaText}
                   <ArrowRight className="ml-2 size-5 sm:size-6" />
                 </a>
               </Button>

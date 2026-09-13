@@ -6,6 +6,7 @@ import { Button } from "./ui/button"
 import { ArrowRight } from "lucide-react"
 import { useSiteContent } from "@/hooks/use-site-content"
 import { ServiceTimesRow } from "@/components/service-times-row"
+import { defaultAboutServiceTimes } from "@/lib/content-defaults"
 
 export function VisitHeroSection() {
   const { data: visitHeroData, loading: visitHeroLoading } = useSiteContent("visitHero")
@@ -64,8 +65,8 @@ export function VisitHeroSection() {
         <div className="mb-6 sm:mb-8">
           <ServiceTimesRow
             items={[
-              ...serviceTimesData.sundayServices,
-              { label: serviceTimesData.wednesdayLabel, time: serviceTimesData.wednesdayTime },
+              ...defaultAboutServiceTimes.sundayServices,
+              { label: defaultAboutServiceTimes.wednesdayLabel, time: defaultAboutServiceTimes.wednesdayTime },
             ]}
           />
         </div>

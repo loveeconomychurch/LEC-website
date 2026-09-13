@@ -75,8 +75,8 @@ import type {
 export const defaultHero: HeroContent = {
   headline: "OUR YEAR OF ABUNDANT GRACE AND GREAT APOSTLESHIP",
   subtitle:
-    "We're a church built on grace and driven by love — dispensing the life of Christ into our homes, our city, and the nations.",
-  serviceTimes: "Sundays at 9am to 12:30pm | Wednesdays at 7pm",
+    "Isaiah 54:1-3",
+  serviceTimes: " Sundays 7:30 AM & 9:30 AM | Wednesdays 7:30 PM",
   primaryCta: "Join Our Community",
   primaryCtaLink: "/visit",
   secondaryCta: "Watch Online",
@@ -237,7 +237,7 @@ export const defaultAboutHero: AboutHeroContent = {
 
 export const defaultAboutStory: AboutStoryContent = {
   storyTitle: "Our Story",
-  storyParagraph1: "Love Economy Church is a community where faith transforms lives and purpose drives action. We believe in the power of love to create lasting change in our hearts, families, and world.",
+  storyParagraph1: "Love Economy Church exists to dispense Christ with love — the Holy Spirit as our means. We're a family built on grace, growing in truth, and committed to seeing lives transformed by God's love.",
   storyParagraph2: "Founded on biblical principles and a heart for serving others, we've grown from a small gathering into a vibrant church family with multiple locations. Our journey is marked by God's faithfulness and the incredible ways He has used our community to make a difference.",
   storyParagraph3: "We're committed to creating spaces where everyone can experience God's love, grow in their faith, and discover their purpose. Whether you're exploring faith for the first time or looking to deepen your relationship with God, you're welcome here.",
 };
@@ -281,11 +281,11 @@ export const defaultAboutCoreValues: AboutCoreValuesContent = {
 export const defaultAboutServiceTimes: AboutServiceTimesContent = {
   serviceTimesTitle: "Join Us for Service",
   sundayServices: [
-    { label: "Sunday Love Service", time: "9:00 AM" },
-    { label: "Sunday Enlargement Service", time: "12:30 PM" },
+    { label: "Sunday Love Service", time: "7:30 AM" },
+    { label: "Sunday Enlargement Service", time: "9:00 AM" },
   ],
-  wednesdayLabel: "Wednesdays",
-  wednesdayTime: "7:00 PM",
+  wednesdayLabel: "Mid-Week Service",
+  wednesdayTime: "7:00 PM - Wednesday",
   visitCtaText: "Visit a Location",
 };
 
