@@ -152,7 +152,11 @@ export function MinistriesEditor({ onSaved }: { onSaved?: () => void }) {
                   <Label className="text-xs">Icon</Label>
                   <select
                     value={card.icon ?? ""}
-                    onChange={(e) => updateCard(i, "icon", e.target.value as MinistryCard["icon"])}
+                    onChange={(e) => updateCard(
+                      i,
+                      "icon",
+                      e.target.value as "" | "fastForward" | "smile"
+                    )}
                     className="w-full rounded-md border border-neutral-700 bg-neutral-800 px-3 py-2 text-sm text-white"
                   >
                     <option value="">None</option>

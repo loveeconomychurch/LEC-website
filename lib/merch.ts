@@ -153,9 +153,15 @@ export async function getMerchOrders({
 } = {}): Promise<MerchOrdersPage> {
   const ref = collection(db, ORDERS_COLLECTION);
   const boundedPageSize = Math.min(Math.max(Math.trunc(pageSize), 1), 100);
-  const constraints = [orderBy("createdAt", "desc"), limit(boundedPageSize)];
-  if (after) constraints.splice(1, 0, startAfter(after));
-  const snap = await getDocs(query(ref, ...constraints));
+  const ordersQuery = after
+    ? query(
+        ref,
+        orderBy("createdAt", "desc"),
+        startAfter(after),
+        limit(boundedPageSize)
+      )
+    : query(ref, orderBy("createdAt", "desc"), limit(boundedPageSize));
+  const snap = await getDocs(ordersQuery);
   const orders = snap.docs.map((d) => orderFromDoc(d.id, d.data()));
   return {
     orders,

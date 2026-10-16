@@ -273,7 +273,6 @@ export function BranchRegistrationForm() {
                 mapTypeControl: false,
                 fullscreenControl: true,
                 clickableIcons: false, // Prevents clicking on random POIs
-                cursor: "crosshair", // Suggests clicking is allowed
               }}
             >
               {selectedLocation && (
