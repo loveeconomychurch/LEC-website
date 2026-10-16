@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { getMerchOrders, updateMerchOrderStatus } from "@/lib/merch";
+import type { MerchOrdersPage } from "@/lib/merch";
 import type { MerchOrder } from "@/lib/types/merch";
 import { ChevronDown, ShoppingBag } from "lucide-react";
 
@@ -11,15 +12,30 @@ const STATUS_OPTIONS: MerchOrder["status"][] = ["pending", "confirmed", "shipped
 export function MerchOrdersList() {
   const [orders, setOrders] = useState<MerchOrder[]>([]);
   const [loading, setLoading] = useState(true);
+  const [loadingMore, setLoadingMore] = useState(false);
+  const [cursor, setCursor] = useState<MerchOrdersPage["nextCursor"]>(null);
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
   const load = async () => {
     setLoading(true);
     try {
-      const list = await getMerchOrders();
-      setOrders(list);
+      const page = await getMerchOrders();
+      setOrders(page.orders);
+      setCursor(page.nextCursor);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const loadMore = async () => {
+    if (!cursor) return;
+    setLoadingMore(true);
+    try {
+      const page = await getMerchOrders({ after: cursor });
+      setOrders((current) => [...current, ...page.orders]);
+      setCursor(page.nextCursor);
+    } finally {
+      setLoadingMore(false);
     }
   };
 
@@ -135,6 +151,17 @@ export function MerchOrdersList() {
           );
         })}
       </ul>
+      {cursor && (
+        <Button
+          type="button"
+          variant="outline"
+          className="w-full border-neutral-700"
+          disabled={loadingMore}
+          onClick={loadMore}
+        >
+          {loadingMore ? "Loading…" : "Load more orders"}
+        </Button>
+      )}
     </div>
   );
 }

@@ -65,11 +65,12 @@ export function AdminOverviewDashboard({ onSelectTab }: AdminOverviewDashboardPr
     setLoading(true);
     setError(null);
     try {
-      const [products, orders, categories] = await Promise.all([
+      const [products, ordersPage, categories] = await Promise.all([
         getMerchProducts(),
-        getMerchOrders(),
+        getMerchOrders({ pageSize: 100 }),
         getMerchCategories(),
       ]);
+      const orders = ordersPage.orders;
       const now = new Date();
       const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1).toISOString();
       const activeCount = products.filter((p) => p.active).length;

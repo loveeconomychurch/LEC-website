@@ -185,11 +185,11 @@ export function MinistriesEditor({ onSaved }: { onSaved?: () => void }) {
               )}
               {i === 4 && (
                 <div className="space-y-1">
-                  <Label className="text-xs">Video URL (e.g. /letom.mov)</Label>
+                  <Label className="text-xs">Video URL (e.g. /letom.mp4)</Label>
                   <Input
                     value={card.videoUrl ?? ""}
                     onChange={(e) => updateCard(i, "videoUrl", e.target.value)}
-                    placeholder="/letom.mov"
+                    placeholder="/letom.mp4"
                     className="bg-neutral-800 border-neutral-700"
                   />
                 </div>

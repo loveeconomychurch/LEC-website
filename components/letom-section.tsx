@@ -34,10 +34,11 @@ export function LetomSection() {
         <div className="absolute inset-0 z-0">
           {hero.videoUrl ? (
             <video
-              autoPlay
               muted
-              loop
               playsInline
+              controls
+              preload="none"
+              poster={hero.backgroundImageUrl || "/letom-poster.jpg"}
               className="w-full h-full object-cover"
             >
               <source src={hero.videoUrl} type="video/mp4" />

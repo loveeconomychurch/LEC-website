@@ -3,15 +3,17 @@
 import { useState, useEffect, useCallback } from "react";
 import { getContent, getDefault } from "@/lib/cms";
 import type { ContentSectionId, ContentMap } from "@/lib/types/cms";
+import { useServerSiteContent } from "@/components/site-content-provider";
 
 /**
- * Loads CMS content for a section. Data is null until the first fetch completes
- * (from DB or default), so default content is not shown before we know there's
- * nothing in the DB. Use loading or data === null to show a loading state.
+ * Reads server-prefetched CMS content immediately. `refresh` performs an
+ * uncached client read for admin previews after an edit.
  */
 export function useSiteContent<T extends ContentSectionId>(sectionId: T) {
-  const [data, setData] = useState<ContentMap[T] | null>(null);
-  const [loading, setLoading] = useState(true);
+  const serverContent = useServerSiteContent();
+  const initialData = serverContent?.[sectionId] ?? getDefault(sectionId);
+  const [data, setData] = useState<ContentMap[T]>(initialData);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState<Error | null>(null);
 
   const refresh = useCallback(() => {
@@ -29,8 +31,9 @@ export function useSiteContent<T extends ContentSectionId>(sectionId: T) {
   }, [sectionId]);
 
   useEffect(() => {
-    refresh();
-  }, [refresh]);
+    setData(serverContent?.[sectionId] ?? getDefault(sectionId));
+    setLoading(false);
+  }, [sectionId, serverContent]);
 
   return { data, loading, error, refresh };
 }

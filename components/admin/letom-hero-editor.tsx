@@ -53,7 +53,7 @@ export function LetomHeroEditor({ onSaved }: { onSaved?: () => void }) {
       </div>
       <div className="space-y-2">
         <Label>Background video URL</Label>
-        <Input value={form.videoUrl} onChange={(e) => update("videoUrl", e.target.value)} placeholder="/letom.mov" className="bg-neutral-800 border-neutral-700" />
+        <Input value={form.videoUrl} onChange={(e) => update("videoUrl", e.target.value)} placeholder="/letom.mp4" className="bg-neutral-800 border-neutral-700" />
         <p className="text-xs text-neutral-500">When set, video is used as hero background (autoplay, muted, loop). Leave empty to use image only.</p>
       </div>
       <MediaUpload label="Background image (fallback when no video)" type="image" value={form.backgroundImageUrl} onChange={(url) => update("backgroundImageUrl", url)} folder="letom" />

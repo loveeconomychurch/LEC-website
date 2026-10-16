@@ -215,14 +215,14 @@ export function PrayerSection() {
               className="relative h-96 w-full overflow-hidden"
             >
               <video
-                autoPlay
-                loop
                 muted
                 playsInline
+                controls
+                preload="none"
+                poster="/p1-poster.jpg"
                 className="absolute inset-0 w-full h-full object-cover"
               >
-                <source src="/p1.mov" type="video/quicktime" />
-                <source src="/p1.mov" type="video/mp4" />
+                <source src="/p1.mp4" type="video/mp4" />
               </video>
             </motion.div>
             <motion.div
@@ -233,14 +233,14 @@ export function PrayerSection() {
               className="relative h-96 w-full overflow-hidden"
             >
               <video
-                autoPlay
-                loop
                 muted
                 playsInline
+                controls
+                preload="none"
+                poster="/p2-poster.jpg"
                 className="absolute inset-0 w-full h-full object-cover"
               >
-                <source src="/p2.mov" type="video/quicktime" />
-                <source src="/p2.mov" type="video/mp4" />
+                <source src="/p2.mp4" type="video/mp4" />
               </video>
             </motion.div>
             <motion.div
@@ -251,14 +251,14 @@ export function PrayerSection() {
               className="relative h-96 w-full overflow-hidden"
             >
               <video
-                autoPlay
-                loop
                 muted
                 playsInline
+                controls
+                preload="none"
+                poster="/p3-poster.jpg"
                 className="absolute inset-0 w-full h-full object-cover"
               >
-                <source src="/p3.mov" type="video/quicktime" />
-                <source src="/p3.mov" type="video/mp4" />
+                <source src="/p3.mp4" type="video/mp4" />
               </video>
             </motion.div>
             <div className="absolute top-16 inset-0 bg-gradient-to-b from-neutral-900 via-neutral-900/80 to-transparent -rotate-[180deg] h-96 z-10"></div>

@@ -174,7 +174,7 @@ export const defaultMinistries: MinistriesContent = {
       headline: "Love Economy Teens Outreach Ministry",
       showLearnMore: true,
       learnMoreLink: "/letom",
-      videoUrl: "/letom.mov",
+      videoUrl: "/letom.mp4",
       bgColor: "amber-800",
       icon: "",
     },
@@ -811,7 +811,7 @@ export const defaultLetomHero: LetomHeroContent = {
   title: "LETOM",
   subtitle:
     "Reaching out to high schools and teens with the message of God's love, purpose, and transformation.",
-  videoUrl: "/letom.mov",
+  videoUrl: "/letom.mp4",
   backgroundImageUrl: "/youth-group-teenagers-in-church-fellowship.jpg",
   primaryCta: "Get Involved",
   primaryCtaLink: "",

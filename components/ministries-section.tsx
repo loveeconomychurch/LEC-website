@@ -88,10 +88,11 @@ function MinistryCardBlock({
       {hasVideo ? (
         <>
           <video
-            autoPlay
             muted
-            loop
             playsInline
+            controls
+            preload="none"
+            poster={card.backgroundImage || "/youth-group-teenagers-in-church-fellowship.jpg"}
             className="absolute inset-0 w-full h-full object-cover"
           >
             <source src={card.videoUrl} type="video/mp4" />

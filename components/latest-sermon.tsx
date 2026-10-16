@@ -104,7 +104,8 @@ export function LatestSermon() {
                         <video
                           src={data.videoUrl}
                           controls
-                          autoPlay
+                          preload="none"
+                          poster={data.thumbnailUrl || undefined}
                           className="w-full h-full"
                           title={data.sermonTitle}
                         />

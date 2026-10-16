@@ -83,8 +83,8 @@ export default function AdminLoginPage() {
             </Button>
           </form>
           <p className="mt-4 text-xs text-neutral-500">
-            Create your first admin user in Firebase Console: Authentication →
-            Sign-in method → Enable Email/Password → Users → Add user.
+            Access requires both a Firebase Authentication account and an
+            administrator record provisioned by the project owner.
           </p>
         </CardContent>
       </Card>

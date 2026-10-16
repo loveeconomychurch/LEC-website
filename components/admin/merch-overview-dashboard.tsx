@@ -64,11 +64,12 @@ export function MerchOverviewDashboard({ onSelectTab }: MerchOverviewDashboardPr
     setLoading(true);
     setError(null);
     try {
-      const [products, orders, categories] = await Promise.all([
+      const [products, ordersPage, categories] = await Promise.all([
         getMerchProducts(),
-        getMerchOrders(),
+        getMerchOrders({ pageSize: 100 }),
         getMerchCategories(),
       ]);
+      const orders = ordersPage.orders;
       const activeCount = products.filter((p) => p.active).length;
       const pendingCount = orders.filter((o) => o.status === "pending").length;
       const totalRevenue = orders.reduce((sum, o) => sum + o.total, 0);

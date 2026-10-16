@@ -1,10 +1,18 @@
 rules_version = '2';
 service firebase.storage {
   match /b/{bucket}/o {
-    // CMS uploads: only authenticated users can write; anyone can read
+    function isAdmin() {
+      return request.auth != null
+        && firestore.exists(
+          /databases/(default)/documents/admins/$(request.auth.uid)
+        );
+    }
+
+    // WEBSITE RULES FRAGMENT. Like firestore.rules, this must be merged into
+    // the shared project's complete ruleset and is not directly deployable.
     match /cms/{allPaths=**} {
       allow read: if true;
-      allow write: if request.auth != null;
+      allow write: if isAdmin();
     }
   }
 }

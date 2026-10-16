@@ -23,10 +23,11 @@ export function VisitHeroSection() {
       <div className="relative h-[65vh] min-h-[320px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <video
-            autoPlay
             muted
-            loop
             playsInline
+            controls
+            preload="none"
+            poster={backgroundImageUrl || "/lec-service-poster.jpg"}
             className="w-full h-full object-cover"
           >
             <source src={videoUrl} type="video/mp4" />

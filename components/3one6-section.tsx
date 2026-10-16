@@ -88,7 +88,7 @@ export function ThreeOneSixSection() {
         className="relative w-full min-h-[90vh] flex items-center justify-center px-8 pt-32 pb-20 bg-black"
       >
         <div className="absolute inset-0 z-0">
-          <video autoPlay muted loop playsInline className="w-full h-full object-cover opacity-40">
+          <video muted playsInline controls preload="none" poster="/3one6.png" className="w-full h-full object-cover opacity-40">
             <source src={hero.videoUrl} type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/80" />
@@ -269,7 +269,7 @@ export function ThreeOneSixSection() {
 
       {/* In Your City CTA */}
       <div data-cms-section="threeOneSixInYourCity" className="relative w-full min-h-[80vh] flex items-center justify-center overflow-hidden">
-        <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover">
+        <video muted playsInline controls preload="none" poster="/3one6.png" className="absolute inset-0 w-full h-full object-cover">
           <source src={inYourCity.videoUrl} type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-black/60" />
