@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { LogOut, LayoutDashboard, ArrowLeft } from "lucide-react";
 
 function AdminLayoutInner({ children }: { children: React.ReactNode }) {
-  const { user, isAdmin, loading, signOut } = useAdminAuth();
+  const { user, isWebsiteEditor, loading, signOut } = useAdminAuth();
   const pathname = usePathname();
   const router = useRouter();
   const isLoginPage = pathname === "/admin/login";
@@ -48,7 +48,7 @@ function AdminLayoutInner({ children }: { children: React.ReactNode }) {
     return <>{children}</>;
   }
 
-  if (user && !isAdmin) {
+  if (user && !isWebsiteEditor) {
     return (
       <div className="min-h-screen flex flex-col gap-4 items-center justify-center bg-neutral-950 px-6 text-center">
         <h1 className="text-xl font-semibold text-white">Access denied</h1>

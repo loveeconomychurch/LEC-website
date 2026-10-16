@@ -1,10 +1,27 @@
 rules_version = '2';
 service firebase.storage {
   match /b/{bucket}/o {
-    function isAdmin() {
+    function isWebsiteEditor() {
       return request.auth != null
         && firestore.exists(
-          /databases/(default)/documents/admins/$(request.auth.uid)
+          /databases/(default)/documents/user-roles/$(request.auth.uid)
+        )
+        && firestore.get(
+          /databases/(default)/documents/user-roles/$(request.auth.uid)
+        ).data.websiteEditor == true;
+    }
+
+    function isValidCmsUpload() {
+      return request.resource.contentType != null
+        && (
+          (
+            request.resource.contentType.matches('image/.*')
+            && request.resource.size < 10 * 1024 * 1024
+          )
+          || (
+            request.resource.contentType.matches('video/.*')
+            && request.resource.size < 200 * 1024 * 1024
+          )
         );
     }
 
@@ -12,7 +29,8 @@ service firebase.storage {
     // the shared project's complete ruleset and is not directly deployable.
     match /cms/{allPaths=**} {
       allow read: if true;
-      allow write: if isAdmin();
+      allow create, update: if isWebsiteEditor() && isValidCmsUpload();
+      allow delete: if isWebsiteEditor();
     }
   }
 }

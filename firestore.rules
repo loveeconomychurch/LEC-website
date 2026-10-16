@@ -5,9 +5,14 @@ service cloud.firestore {
     // This shared Firebase project also serves other applications. This file is
     // intentionally not referenced by firebase.json: merge these matches into
     // the project's complete ruleset before deploying it.
-    function isAdmin() {
+    function isWebsiteEditor() {
       return request.auth != null
-        && exists(/databases/$(database)/documents/admins/$(request.auth.uid));
+        && exists(
+          /databases/$(database)/documents/user-roles/$(request.auth.uid)
+        )
+        && get(
+          /databases/$(database)/documents/user-roles/$(request.auth.uid)
+        ).data.websiteEditor == true;
     }
 
     function validOrderCreate() {
@@ -49,36 +54,38 @@ service cloud.firestore {
         && request.resource.data.updatedAt.size() <= 40;
     }
 
-    // Admin records must be provisioned outside the website. A user can only
-    // read their own record, and no client can create or alter one.
-    match /admins/{uid} {
+    // Roles are server-written by lec-mishenah-admin. The website only needs
+    // to read the signed-in user's own role document to gate its UI.
+    match /user-roles/{uid} {
       allow get: if request.auth != null && request.auth.uid == uid;
       allow list, create, update, delete: if false;
     }
 
-    // CMS content: public site reads; website administrators write.
+    // CMS content: public site reads; website editors write.
     match /content/{sectionId} {
       allow read: if true;
-      allow write: if isAdmin();
+      allow write: if isWebsiteEditor();
     }
 
-    // Merch products: public storefront reads; administrators write.
+    // Merch products: public storefront reads; website editors write.
     match /merch_products/{productId} {
       allow read: if true;
-      allow write: if isAdmin();
+      allow write: if isWebsiteEditor();
     }
 
     // Checkout remains public, with a bounded schema. Order data contains PII,
-    // so only website administrators can read or modify it.
+    // so only website editors can read or modify it. hasOnly() plus the
+    // required pending status prevents clients from supplying paid flags or
+    // pre-marking an order as paid.
     match /merch_orders/{orderId} {
       allow create: if validOrderCreate();
-      allow read, update, delete: if isAdmin();
+      allow read, update, delete: if isWebsiteEditor();
     }
 
-    // Merch config: public storefront reads; administrators write.
+    // Merch config: public storefront reads; website editors write.
     match /merch_config/{docId} {
       allow read: if true;
-      allow write: if isAdmin();
+      allow write: if isWebsiteEditor();
     }
   }
 }

@@ -19,7 +19,7 @@ import { auth, db } from "@/lib/firebase";
 
 interface AuthContextValue {
   user: User | null;
-  isAdmin: boolean;
+  isWebsiteEditor: boolean;
   loading: boolean;
   signIn: (email: string, password: string) => Promise<void>;
   signOut: () => Promise<void>;
@@ -29,14 +29,14 @@ const AuthContext = createContext<AuthContextValue | null>(null);
 
 export function AdminAuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
-  const [isAdmin, setIsAdmin] = useState(false);
+  const [isWebsiteEditor, setIsWebsiteEditor] = useState(false);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, async (u) => {
       setLoading(true);
       setUser(u);
-      setIsAdmin(false);
+      setIsWebsiteEditor(false);
 
       if (!u) {
         setLoading(false);
@@ -44,8 +44,10 @@ export function AdminAuthProvider({ children }: { children: ReactNode }) {
       }
 
       try {
-        const admin = await getDoc(doc(db, "admins", u.uid));
-        setIsAdmin(admin.exists());
+        const roles = await getDoc(doc(db, "user-roles", u.uid));
+        setIsWebsiteEditor(
+          roles.exists() && roles.data().websiteEditor === true
+        );
       } catch (error) {
         console.error("[admin] Unable to verify administrator access", error);
       } finally {
@@ -57,10 +59,10 @@ export function AdminAuthProvider({ children }: { children: ReactNode }) {
 
   const signIn = useCallback(async (email: string, password: string) => {
     const credential = await signInWithEmailAndPassword(auth, email, password);
-    const admin = await getDoc(doc(db, "admins", credential.user.uid));
-    if (!admin.exists()) {
+    const roles = await getDoc(doc(db, "user-roles", credential.user.uid));
+    if (!roles.exists() || roles.data().websiteEditor !== true) {
       await firebaseSignOut(auth);
-      throw new Error("This account is not authorized to access the website admin.");
+      throw new Error("This account does not have website editor access.");
     }
   }, []);
 
@@ -69,7 +71,7 @@ export function AdminAuthProvider({ children }: { children: ReactNode }) {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user, isAdmin, loading, signIn, signOut }}>
+    <AuthContext.Provider value={{ user, isWebsiteEditor, loading, signIn, signOut }}>
       {children}
     </AuthContext.Provider>
   );

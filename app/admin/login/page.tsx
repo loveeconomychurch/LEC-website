@@ -84,7 +84,7 @@ export default function AdminLoginPage() {
           </form>
           <p className="mt-4 text-xs text-neutral-500">
             Access requires both a Firebase Authentication account and an
-            administrator record provisioned by the project owner.
+            assigned website editor role.
           </p>
         </CardContent>
       </Card>
