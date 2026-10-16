@@ -61,7 +61,7 @@ export function PrayerSection() {
               Need a Prayer?
             </h1>
             <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-              We're here to pray with you and for you. Share your prayer request and know that you're being lifted up in prayer.
+              We’re here to pray with you and for you. Share your prayer request and know that you’re being lifted up in prayer.
             </p>
           </motion.div>
 

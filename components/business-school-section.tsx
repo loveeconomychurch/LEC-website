@@ -217,13 +217,13 @@ export function BusinessSchoolSection() {
                 className="space-y-4 text-base sm:text-lg text-neutral-600 leading-relaxed"
               >
                 <p>
-                  Love Economy Business School is dedicated to empowering Christian entrepreneurs and business leaders to build successful enterprises that reflect God's character and advance His kingdom.
+                  Love Economy Business School is dedicated to empowering Christian entrepreneurs and business leaders to build successful enterprises that reflect God’s character and advance His kingdom.
                 </p>
                 <p>
                   Our comprehensive curriculum combines timeless biblical principles with modern business practices, ensuring that you can excel in the marketplace while maintaining your integrity and purpose.
                 </p>
                 <p>
-                  Whether you're just starting your business journey or looking to take your existing enterprise to the next level, we provide the knowledge, skills, and community support you need to succeed.
+                  Whether you’re just starting your business journey or looking to take your existing enterprise to the next level, we provide the knowledge, skills, and community support you need to succeed.
                 </p>
               </motion.div>
             </motion.div>
