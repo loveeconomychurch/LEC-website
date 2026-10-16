@@ -81,7 +81,10 @@
     "onlyBuiltDependencies": [
       "@firebase/util",
       "@tailwindcss/oxide",
-      "protobufjs"
+      "esbuild",
+      "protobufjs",
+      "sharp",
+      "unrs-resolver"
     ]
   }
 }
