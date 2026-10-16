@@ -69,7 +69,7 @@ export function FeaturedEventsSection() {
             transition={{ duration: 0.6, delay: 0.4, ease: [0.4, 0, 0.2, 1] }}
             viewport={{ once: true, margin: "-100px" }}
           >
-            Don't miss these special gatherings that will transform your faith and connect you with our community
+            Don’t miss these special gatherings that will transform your faith and connect you with our community
           </motion.p>
         </motion.div>
 

@@ -115,7 +115,7 @@ export function Footer() {
                 </li>
                 <li>
                   <a href="/childrens-ministry" className="hover:text-accent transition-colors">
-                    Children's Ministry
+                    Children’s Ministry
                   </a>
                 </li>
                 <li>

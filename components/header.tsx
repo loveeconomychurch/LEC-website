@@ -382,7 +382,7 @@ export function Header(background: { background?: boolean }) {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5, delay: 0.95, ease: [0.4, 0, 0.2, 1] }}
                     >
-                      <p>Children's Ministry</p>
+                      <p>Children’s Ministry</p>
                     </motion.a>
                     <motion.a
                       href="/teens-church"
@@ -467,7 +467,7 @@ export function Header(background: { background?: boolean }) {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.6, delay: 0.6, ease: [0.4, 0, 0.2, 1] }}
                   >
-                    Believers' Convention
+                    Believers’ Convention
                   </motion.a>
                   <motion.a 
                     href="/events"

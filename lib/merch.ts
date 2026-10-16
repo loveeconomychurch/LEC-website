@@ -11,7 +11,10 @@ import {
   deleteDoc,
   query,
   orderBy,
+  limit,
+  startAfter,
   type DocumentData,
+  type QueryDocumentSnapshot,
 } from "firebase/firestore";
 import { db } from "./firebase";
 import type { MerchProduct, MerchOrder, MerchOrderItem } from "./types/merch";
@@ -135,13 +138,37 @@ export async function deleteMerchProduct(id: string): Promise<void> {
   await deleteDoc(ref);
 }
 
-/** Fetch all orders, newest first. */
-export async function getMerchOrders(): Promise<MerchOrder[]> {
+export interface MerchOrdersPage {
+  orders: MerchOrder[];
+  nextCursor: QueryDocumentSnapshot<DocumentData> | null;
+}
+
+/** Fetch one bounded page of orders, newest first. */
+export async function getMerchOrders({
+  pageSize = 50,
+  after,
+}: {
+  pageSize?: number;
+  after?: QueryDocumentSnapshot<DocumentData> | null;
+} = {}): Promise<MerchOrdersPage> {
   const ref = collection(db, ORDERS_COLLECTION);
-  const snap = await getDocs(ref);
+  const boundedPageSize = Math.min(Math.max(Math.trunc(pageSize), 1), 100);
+  const ordersQuery = after
+    ? query(
+        ref,
+        orderBy("createdAt", "desc"),
+        startAfter(after),
+        limit(boundedPageSize)
+      )
+    : query(ref, orderBy("createdAt", "desc"), limit(boundedPageSize));
+  const snap = await getDocs(ordersQuery);
   const orders = snap.docs.map((d) => orderFromDoc(d.id, d.data()));
-  orders.sort((a, b) => (b.createdAt > a.createdAt ? 1 : -1));
-  return orders;
+  return {
+    orders,
+    nextCursor: snap.docs.length === boundedPageSize
+      ? snap.docs[snap.docs.length - 1]
+      : null,
+  };
 }
 
 /** Get a single order. */

@@ -32,6 +32,8 @@ export function HeroSection() {
           muted
           loop
           playsInline
+          preload="none"
+          poster={data.backgroundImageUrl || "/lec-service-poster.jpg"}
           className="w-full h-full object-cover opacity-100"
         >
           <source

@@ -13,7 +13,7 @@ export function ConnectSection() {
             Connect With Us
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-balance">
-            We'd love to hear from you. Reach out with questions, prayer requests, or just to say hello
+            We’d love to hear from you. Reach out with questions, prayer requests, or just to say hello
           </p>
         </div>
 
@@ -66,7 +66,7 @@ export function ConnectSection() {
               <CardContent className="p-6">
                 <h4 className="text-lg font-semibold mb-4">First Time Visitor?</h4>
                 <p className="text-muted-foreground mb-4">
-                  We'd love to welcome you personally! Let us know you're coming and we'll make sure you have a great
+                  We’d love to welcome you personally! Let us know you’re coming and we’ll make sure you have a great
                   experience.
                 </p>
                 <Button className="w-full">Plan Your Visit</Button>

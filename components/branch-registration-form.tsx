@@ -8,7 +8,6 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { toast } from "sonner"
-import { useRouter } from "next/navigation"
 
 const mapContainerStyle = {
   width: "100%",
@@ -23,7 +22,6 @@ const defaultCenter = {
 }
 
 export function BranchRegistrationForm() {
-  const router = useRouter()
   const { isLoaded, loadError } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || "",
@@ -33,6 +31,7 @@ export function BranchRegistrationForm() {
   const [branchName, setBranchName] = useState("")
   const [contact, setContact] = useState("")
   const [services, setServices] = useState("")
+  const [website, setWebsite] = useState("")
   const [selectedLocation, setSelectedLocation] = useState<{ lat: number; lng: number } | null>(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
 
@@ -100,6 +99,7 @@ export function BranchRegistrationForm() {
           branchName,
           contact,
           services,
+          website,
           lat: selectedLocation.lat,
           lng: selectedLocation.lng,
         }),
@@ -115,6 +115,7 @@ export function BranchRegistrationForm() {
       setBranchName("")
       setContact("")
       setServices("")
+      setWebsite("")
       setSelectedLocation(null)
       // Optional: router.push("/")
     } catch (error: any) {
@@ -133,6 +134,17 @@ export function BranchRegistrationForm() {
       </div>
 
       <form onSubmit={handleSubmit} className="flex flex-col lg:flex-row gap-8 h-full">
+        <div className="absolute -left-[10000px]" aria-hidden="true">
+          <Label htmlFor="website">Website</Label>
+          <Input
+            id="website"
+            name="website"
+            value={website}
+            onChange={(event) => setWebsite(event.target.value)}
+            autoComplete="off"
+            tabIndex={-1}
+          />
+        </div>
         {/* Left Side - Form Details */}
         <div className="w-full lg:w-1/3 flex flex-col gap-6">
           <div className="space-y-2">
@@ -261,7 +273,6 @@ export function BranchRegistrationForm() {
                 mapTypeControl: false,
                 fullscreenControl: true,
                 clickableIcons: false, // Prevents clicking on random POIs
-                cursor: "crosshair", // Suggests clicking is allowed
               }}
             >
               {selectedLocation && (

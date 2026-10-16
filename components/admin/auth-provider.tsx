@@ -14,10 +14,12 @@ import {
   signOut as firebaseSignOut,
   type User,
 } from "firebase/auth";
-import { auth } from "@/lib/firebase";
+import { doc, getDoc } from "firebase/firestore";
+import { auth, db } from "@/lib/firebase";
 
 interface AuthContextValue {
   user: User | null;
+  isWebsiteEditor: boolean;
   loading: boolean;
   signIn: (email: string, password: string) => Promise<void>;
   signOut: () => Promise<void>;
@@ -27,18 +29,41 @@ const AuthContext = createContext<AuthContextValue | null>(null);
 
 export function AdminAuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
+  const [isWebsiteEditor, setIsWebsiteEditor] = useState(false);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const unsub = onAuthStateChanged(auth, (u) => {
+    const unsub = onAuthStateChanged(auth, async (u) => {
+      setLoading(true);
       setUser(u);
-      setLoading(false);
+      setIsWebsiteEditor(false);
+
+      if (!u) {
+        setLoading(false);
+        return;
+      }
+
+      try {
+        const roles = await getDoc(doc(db, "user-roles", u.uid));
+        setIsWebsiteEditor(
+          roles.exists() && roles.data().websiteEditor === true
+        );
+      } catch (error) {
+        console.error("[admin] Unable to verify administrator access", error);
+      } finally {
+        setLoading(false);
+      }
     });
     return () => unsub();
   }, []);
 
   const signIn = useCallback(async (email: string, password: string) => {
-    await signInWithEmailAndPassword(auth, email, password);
+    const credential = await signInWithEmailAndPassword(auth, email, password);
+    const roles = await getDoc(doc(db, "user-roles", credential.user.uid));
+    if (!roles.exists() || roles.data().websiteEditor !== true) {
+      await firebaseSignOut(auth);
+      throw new Error("This account does not have website editor access.");
+    }
   }, []);
 
   const signOut = useCallback(async () => {
@@ -46,7 +71,7 @@ export function AdminAuthProvider({ children }: { children: ReactNode }) {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user, loading, signIn, signOut }}>
+    <AuthContext.Provider value={{ user, isWebsiteEditor, loading, signIn, signOut }}>
       {children}
     </AuthContext.Provider>
   );
